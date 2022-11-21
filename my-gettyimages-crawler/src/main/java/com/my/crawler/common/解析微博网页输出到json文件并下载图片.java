@@ -14,8 +14,10 @@ import java.net.MalformedURLException;
 import java.net.Proxy;
 import java.net.URL;
 import java.nio.file.Files;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.eclipse.core.runtime.IPath;
@@ -28,38 +30,24 @@ import com.alibaba.fastjson.JSONObject;
 public class 解析微博网页输出到json文件并下载图片 {
 	public static void main(String[] args) throws IOException {
 		File outputFolder = new File("D:\\weibo\\袁姗姗");
-		outputFolder = new File("D:\\weibo\\关晓彤工作室");
-//		outputFolder = new File("D:\\weibo\\王鸥");
-//		outputFolder = new File("D:\\weibo\\王鸥工作室");
-//		outputFolder = new File("D:\\weibo\\张蓝心");
-		outputFolder = new File("D:\\weibo\\徐娇");
-		outputFolder = new File("D:\\weibo\\关晓彤");
-//		outputFolder = new File("D:\\weibo\\宋祖儿");
-//		outputFolder = new File("D:\\weibo\\宋祖儿工作室");
-//		outputFolder = new File("D:\\weibo\\宋祖儿生图botxt8");
-		outputFolder = new File("D:\\weibo\\唐艺昕");
-		outputFolder = new File("D:\\weibo\\唐艺昕工作室");
-		outputFolder = new File("D:\\weibo\\蒋依依");
-//		outputFolder = new File("D:\\weibo\\杨幂工作室");
-//		outputFolder = new File("D:\\weibo\\杨幂");
-//		outputFolder = new File("D:\\weibo\\热依扎");
-		outputFolder = new File("D:\\weibo\\迪丽热巴");
-		outputFolder = new File("D:\\weibo\\张雪迎");
-		outputFolder = new File("D:\\weibo\\张雪迎工作室");
-		outputFolder = new File("D:\\weibo\\张天爱");
-		outputFolder = new File("D:\\weibo\\梁洁");
-		outputFolder = new File("D:\\weibo\\迪丽热巴工作室");
-//		outputFolder = new File("D:\\weibo\\吴宣仪");
-		outputFolder = new File("D:\\weibo\\吴宣仪工作室");
-		outputFolder = new File("D:\\weibo\\林允");
-		outputFolder = new File("D:\\weibo\\林允工作室");
-		outputFolder = new File("D:\\weibo\\吴倩工作室");
-		outputFolder = new File("D:\\weibo\\袁冰妍");
-		outputFolder = new File("D:\\weibo\\韩雪工作室");
-		outputFolder = new File("D:\\weibo\\蒋梦婕工作室");
-//		outputFolder = new File("D:\\weibo\\景甜");
-		
-		JSONArray jsonArray = getImgMap(new File(outputFolder, "json.log"));
+		outputFolder = new File("D:\\weibo\\袁冰妍工作室");
+		downloadFromFolder(outputFolder);
+
+	}
+
+	private static void downloadFromFolder(File outputFolder) throws IOException {
+		File jsonLogFile = new File(outputFolder, "json.log");
+		if (!jsonLogFile.exists()) {
+			return;
+		}
+		JSONArray jsonArray = getImgMap(jsonLogFile);
+		File doneFile = new File(outputFolder, "done.list");
+		List<String> alreadyList;
+		if (doneFile.exists()) {
+			alreadyList = Files.readAllLines(doneFile.toPath());
+		} else {
+			alreadyList = new ArrayList<>();
+		}
 		int i = 0;
 		for (Object object : jsonArray) {
 			JSONObject monthArr = (JSONObject) object;
@@ -77,7 +65,12 @@ public class 解析微博网页输出到json文件并下载图片 {
 					monthFolder.mkdir();
 				}
 				String imgUrlStr = (String) iterator.next();
-				System.out.println(Thread.currentThread().getName() + " 正在下载" + i++ + ":" + imgUrlStr);
+				if (alreadyList.contains(imgUrlStr)) {
+					System.out.println("文件已被备份" + i++ + ":" + imgUrlStr);
+					continue;
+				}
+				alreadyList.add(imgUrlStr);
+				System.out.println("正在下载" + i++ + ":" + imgUrlStr);
 				try {
 					downLoadFromUrl(imgUrlStr, monthFolder, null);
 				} catch (MalformedURLException e) {
@@ -87,6 +80,7 @@ public class 解析微博网页输出到json文件并下载图片 {
 				}
 			}
 		}
+		Files.write(doneFile.toPath(), alreadyList);
 	}
 
 	public static void downLoadFromUrl(String urlStr, File saveDir, String toekn) throws IOException {
