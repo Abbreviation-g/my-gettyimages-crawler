@@ -25,3 +25,5 @@ hs_err_pid*
 /my-gettyimages-crawler/.classpath
 /my-gettyimages-crawler/.project
 /my-gettyimages-crawler/.settings
+
+target

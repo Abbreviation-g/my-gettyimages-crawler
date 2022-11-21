@@ -115,18 +115,20 @@ public class MainFrame {
 			okButton.setEnabled(false);
 			return false;
 		} else {
-			try {
-				if (new URL(urlText.getText()).getHost().equals("www.gettyimages.fr")) {
-					okButton.setEnabled(true);
-					return true;
-				} else {
-					okButton.setEnabled(false);
-					return false;
-				}
-			} catch (Exception e) {
-				okButton.setEnabled(false);
-				return false;
-			}
+			okButton.setEnabled(true);
+			return true;
+//			try {
+//				if (new URL(urlText.getText()).getHost().equals("www.gettyimages.fr")) {
+//					okButton.setEnabled(true);
+//					return true;
+//				} else {
+//					okButton.setEnabled(false);
+//					return false;
+//				}
+//			} catch (Exception e) {
+//				okButton.setEnabled(false);
+//				return false;
+//			}
 		}
 	}
 

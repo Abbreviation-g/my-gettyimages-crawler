@@ -10,8 +10,9 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Iterator;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -40,10 +41,10 @@ public class Downloader {
 		webClient.getOptions().setCssEnabled(false);
 		webClient.getOptions().setJavaScriptEnabled(false);
 		webClient.getOptions().setPrintContentOnFailingStatusCode(false);
-
+		webClient.getOptions().setTimeout(10*1000);
 		try {
 
-			List<String> imgList = getImgList(webClient, url, outputFolder);
+			Set<String> imgList = getImgList(webClient, url, outputFolder);
 			if (imgList == null) {
 				MultiPageParser pageParser = new MultiPageParser(webClient, url);
 				pageParser.parsePage(monitor);
@@ -52,16 +53,19 @@ public class Downloader {
 
 			writeLogFile(url.toString(), imgList, outputFolder);
 			monitor.beginTask("正在下载:", imgList.size());
-			for (int i = 0; i < imgList.size(); i++) {
+			Iterator<String> iterator = imgList.iterator();
+			int i = 0;
+			while(iterator.hasNext()) {
+				String imgUrlStr = iterator.next();
 				if (monitor.isCanceled()) {
 					break;
 				}
-				String imgUrlStr = imgList.get(i);
 				monitor.setTaskName("正在下载:" + (i + 1) + "/" + imgList.size());
 				monitor.subTask(imgUrlStr);
 				System.out.println(i + 1 + "/" + imgList.size());
 				DownloadUtil.downloadImg(webClient, imgUrlStr, outputFolder);
 				monitor.worked(1);
+				i++;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -69,18 +73,22 @@ public class Downloader {
 		webClient.close();
 	}
 
-	public static List<String> getImgList(WebClient webClient, URL url, File outputFolder) {
+	public static Set<String> getImgList(WebClient webClient, URL url, File outputFolder) {
 		File logFile = new File(outputFolder, "list.log");
 		if (logFile.exists()) {
 			try (BufferedReader reader = new BufferedReader(
 					new InputStreamReader(new FileInputStream(logFile), "UTF-8"));) {
 
 				String line = null;
-				List<String> imgList = new ArrayList<>();
+				Set<String> imgList = new LinkedHashSet<>();
+				reader.readLine();// 跳过第一行
 				while ((line = reader.readLine()) != null) {
 					// imgList.add(line.split("=")[1]);
-					String imgUrlStr = line.substring(line.indexOf("=") + 1, line.length());
-					imgList.add(imgUrlStr);
+					int index = line.indexOf('=');
+					if(index!=-1) {
+						String imgUrlStr = line.substring(index + 1);
+						imgList.add(imgUrlStr);
+					}
 				}
 				return imgList;
 			} catch (IOException e) {
@@ -91,17 +99,22 @@ public class Downloader {
 		return null;
 	}
 
-	public static void writeLogFile(String url, List<String> imgList, File outputFolder) {
+	public static void writeLogFile(String url, Set<String> imgList, File outputFolder) {
 		if (!outputFolder.exists()) {
 			outputFolder.mkdirs();
 		}
 
 		try (BufferedWriter writer = new BufferedWriter(
 				new OutputStreamWriter(new FileOutputStream(new File(outputFolder, "list.log")), "UTF-8"));) {
-			for (int i = 0; i < imgList.size(); i++) {
-				String imgUrl = imgList.get(i);
+			writer.write(url);
+			writer.newLine();
+			Iterator<String> iterator = imgList.iterator();
+			int i = 0;
+			while(iterator.hasNext()) {
+				String imgUrl = iterator.next();
 				writer.write(i + "=" + imgUrl);
 				writer.newLine();
+				i++;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -110,7 +123,10 @@ public class Downloader {
 
 	public static void main(String[] args) throws MalformedURLException {
 		String urlStr = "https://www.gettyimages.fr/photos/mi-yang?family=editorial&phrase=Mi%20Yang&recency=anydate&sort=mostpopular&page=1&suppressfamilycorrection=true";
-		File outputFolder = new File("F:\\");
+		urlStr = "https://www.gettyimages.fr/photos/shannon-woodward?family=editorial&phrase=Shannon%20Woodward&sort=mostpopular#license";
+		urlStr = "https://www.gettyimages.com/photos/gong-li?family=editorial&phrase=gong%20li&sort=mostpopular";
+		urlStr = "https://www.gettyimages.com/photos/gong-li?family=editorial&phrase=gong%20li&sort=mostpopular";
+		File outputFolder = new File("F:\\女星\\gettyimages\\monica-bellucci");
 		URL url = new URL(urlStr);
 		Downloader downloader = new Downloader(url, outputFolder);
 		downloader.startDownload(new NullProgressMonitor());

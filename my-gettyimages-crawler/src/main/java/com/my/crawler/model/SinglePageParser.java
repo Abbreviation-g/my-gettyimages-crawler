@@ -1,17 +1,18 @@
 package com.my.crawler.model;
 
-import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 import com.gargoylesoftware.htmlunit.html.HtmlElement;
 
 public class SinglePageParser {
 	private HtmlElement document;
-	protected List<String> imgUrlList;
+	protected Set<String> imgUrlList;
 
 	public SinglePageParser(HtmlElement document) {
 		this.document = document;
-		this.imgUrlList = new ArrayList<>();
+		this.imgUrlList = new LinkedHashSet<>();
 		parsePage();
 	}
 	
@@ -27,7 +28,7 @@ public class SinglePageParser {
 		}
 	}
 	
-	public List<String> getImgUrlList() {
+	public Set<String> getImgUrlList() {
 		return imgUrlList;
 	}
 }

@@ -3,8 +3,9 @@ package com.my.crawler.model;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.apache.http.conn.ConnectTimeoutException;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -19,12 +20,12 @@ public class MultiPageParser {
 	protected final WebClient webClient;
 
 	protected URL url;
-	protected List<String> imgUrlList;
+	protected Set<String> imgUrlList;
 
 	public MultiPageParser(final WebClient webClient, URL url) {
 		this.webClient = webClient;
 		this.url = url;
-		this.imgUrlList = new ArrayList<>();
+		this.imgUrlList = new LinkedHashSet<>();
 	}
 	
 	public void parsePage(IProgressMonitor monitor) {
@@ -88,7 +89,7 @@ public class MultiPageParser {
 		
 	}
 	
-	public List<String> getImgUrlList() {
+	public Set<String> getImgUrlList() {
 		return imgUrlList;
 	}
 }
