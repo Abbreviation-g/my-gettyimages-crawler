@@ -1,0 +1,48 @@
+
+var videoArr = "";
+var monthUrlsMap=[];
+var months = document.getElementsByClassName("ProfileAlbum_date_1kCr6");
+for(var i=0;i<months.length;i++) {
+	var month = months[i];
+	var monthChilren = month.children;
+	var yearText = monthChilren[1].textContent.trim();
+	if(yearText.length ==0){
+		yearText = "2023";
+	}
+	var monthText = monthChilren[0].textContent.trim();
+	var monthStr = yearText +"?"+ monthText;
+	console.log(monthStr)
+
+	var parent = month.parentElement;
+	
+	var imgs = parent.getElementsByTagName("img")
+	var urlArr = [];
+	for(var j=0;j<imgs.length;j++){
+		var img = imgs[j];
+		if(img.getAttribute("class") != "woo-picture-img"){
+			continue;
+		}
+		var url = img.getAttribute("src");
+		url = url.replace("orj360","large")
+		urlArr.push(url);
+	}
+	
+	var videos = parent.getElementsByTagName("video")
+	for(var j=0;j<videos.length;j++){
+		var video = videos[j];
+		var url = video.getAttribute("poster")
+		url = url.replace("orj360","mw2000")
+		urlArr.push(url);
+		
+		var videoUrl = video.getAttribute("src");
+		videoArr = videoArr+"\n" +videoUrl;
+		//urlArr.push(videoUrl);
+	}
+	
+	var json = {"month":monthStr,"arr":urlArr};
+	console.log(json);
+	monthUrlsMap.push(json);
+}
+//console.log(videoArr)
+console.log("\n\n")
+console.log(JSON.stringify(monthUrlsMap))

@@ -17,7 +17,7 @@ public class SinglePageParser {
 	}
 	
 	public void parsePage() {
-		List<HtmlElement> imgEles = document.getElementsByAttribute("img", "class", "gallery-asset__thumb gallery-mosaic-asset__thumb");
+		List<HtmlElement> imgEles = document.getElementsByAttribute("img", "class", "MosaicAsset-module__thumb___yvFP5");
 		for (HtmlElement imgEle : imgEles) {
 			String imgUrlStr  = imgEle.getAttribute("src");
 			imgUrlStr = imgUrlStr.substring(0, imgUrlStr.indexOf("?"));

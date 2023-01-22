@@ -22,6 +22,7 @@ public class GettyImagesDownloadByLog {
 	public static void main(String[] args) {
 		File outputFolder ;
 		outputFolder = new File("G:\\女星\\gettyimages\\欧美\\monica-bellucci");
+		outputFolder = new File("G:\\女星\\gettyimages\\欧美\\salma-hayek");
 		Set<String> imgList = getImgList(outputFolder);
 		System.out.println("总大小: "+imgList.size());
 		Iterator<String> iterator = imgList.iterator();

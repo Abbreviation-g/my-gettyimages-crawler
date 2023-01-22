@@ -17,8 +17,8 @@ import java.util.Set;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.core.runtime.Path;
 
+import com.gargoylesoftware.htmlunit.BrowserVersion;
 import com.gargoylesoftware.htmlunit.WebClient;
 
 public class Downloader {
@@ -27,21 +27,20 @@ public class Downloader {
 
 	public Downloader(final URL url, File outputFolder) throws MalformedURLException {
 		this.url = url;
-		String subFolder = new Path(url.getPath()).lastSegment();
-		this.outputFolder = new File(outputFolder, subFolder);
+		this.outputFolder = outputFolder;
 	}
 
 	public void startDownload(IProgressMonitor monitor) {
 
 		LogFactory.getFactory().setAttribute("org.apache.commons.logging.Log",
 				"org.apache.commons.logging.impl.NoOpLog");
-		final WebClient webClient = new WebClient();
+		final WebClient webClient = new WebClient(BrowserVersion.FIREFOX_60, "127.0.0.1", 10809);
 		webClient.getOptions().setUseInsecureSSL(false);
 		webClient.getOptions().setThrowExceptionOnScriptError(false);
 		webClient.getOptions().setCssEnabled(false);
 		webClient.getOptions().setJavaScriptEnabled(false);
 		webClient.getOptions().setPrintContentOnFailingStatusCode(false);
-		webClient.getOptions().setTimeout(10*1000);
+		webClient.getOptions().setTimeout(10 * 1000);
 		try {
 
 			Set<String> imgList = getImgList(webClient, url, outputFolder);
@@ -55,7 +54,7 @@ public class Downloader {
 			monitor.beginTask("正在下载:", imgList.size());
 			Iterator<String> iterator = imgList.iterator();
 			int i = 0;
-			while(iterator.hasNext()) {
+			while (iterator.hasNext()) {
 				String imgUrlStr = iterator.next();
 				if (monitor.isCanceled()) {
 					break;
@@ -85,7 +84,7 @@ public class Downloader {
 				while ((line = reader.readLine()) != null) {
 					// imgList.add(line.split("=")[1]);
 					int index = line.indexOf('=');
-					if(index!=-1) {
+					if (index != -1) {
 						String imgUrlStr = line.substring(index + 1);
 						imgList.add(imgUrlStr);
 					}
@@ -110,7 +109,7 @@ public class Downloader {
 			writer.newLine();
 			Iterator<String> iterator = imgList.iterator();
 			int i = 0;
-			while(iterator.hasNext()) {
+			while (iterator.hasNext()) {
 				String imgUrl = iterator.next();
 				writer.write(i + "=" + imgUrl);
 				writer.newLine();
@@ -122,11 +121,14 @@ public class Downloader {
 	}
 
 	public static void main(String[] args) throws MalformedURLException {
-		String urlStr = "https://www.gettyimages.fr/photos/mi-yang?family=editorial&phrase=Mi%20Yang&recency=anydate&sort=mostpopular&page=1&suppressfamilycorrection=true";
-		urlStr = "https://www.gettyimages.fr/photos/shannon-woodward?family=editorial&phrase=Shannon%20Woodward&sort=mostpopular#license";
-		urlStr = "https://www.gettyimages.com/photos/gong-li?family=editorial&phrase=gong%20li&sort=mostpopular";
-		urlStr = "https://www.gettyimages.com/photos/gong-li?family=editorial&phrase=gong%20li&sort=mostpopular";
-		File outputFolder = new File("F:\\女星\\gettyimages\\monica-bellucci");
+		String urlStr;
+		File outputFolder;
+		urlStr = "https://www.gettyimages.com/photos/nicole-kidman?assettype=image&family=editorial&phrase=nicole%20kidman&sort=newest";
+		outputFolder = new File("G:\\女星\\gettyimages\\欧美\\nicole-kidman\\1");
+		urlStr = "https://www.gettyimages.com/photos/nicole-kidman?assettype=image&family=editorial&phrase=nicole%20kidman&sort=newest&page=2";
+		outputFolder = new File("G:\\女星\\gettyimages\\欧美\\nicole-kidman\\2");
+		urlStr = "https://www.gettyimages.com/photos/nicole-kidman?assettype=image&family=editorial&phrase=nicole%20kidman&sort=newest&page=3";
+		outputFolder = new File("G:\\女星\\gettyimages\\欧美\\nicole-kidman\\3");
 		URL url = new URL(urlStr);
 		Downloader downloader = new Downloader(url, outputFolder);
 		downloader.startDownload(new NullProgressMonitor());

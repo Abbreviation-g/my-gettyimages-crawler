@@ -32,8 +32,17 @@ public class 文件夹管理 {
 		folderPath = "G:\\女星\\gettyimages\\欧美\\monica-bellucci\\close up";
 		folderPath = "G:\\女星\\gettyimages\\欧美\\megan-fox";
 		folderPath = "G:\\女星\\gettyimages\\欧美\\hayley-atwell\\detail";
+		folderPath = "D:\\weibo\\梦醒忒远\\"+"2022年1月";
+		folderPath = "D:\\weibo\\梦醒忒远\\"+"2022年3月";
+		folderPath = "D:\\weibo\\梦醒忒远\\"+"2022年5月";
+		folderPath = "D:\\weibo\\梦醒忒远\\"+"2022年7月";
+		folderPath = "D:\\weibo\\梦醒忒远\\"+"2022年8月";
+		folderPath = "D:\\weibo\\梦醒忒远\\"+"2022年9月";
+		folderPath = "D:\\weibo\\梦醒忒远\\"+"2022年10月";
+		folderPath = "D:\\weibo\\梦醒忒远\\"+"2022年11月";
+		folderPath = "D:\\weibo\\梦醒忒远\\"+"2022年12月";
 		
-		cutFolder(folderPath,200);
+		cutFolder(folderPath,500);
 	}
 	
 	public static <T> List<List<T>> subList(List<T> list,int subSize){
@@ -59,23 +68,23 @@ public class 文件夹管理 {
         if(files==null || files.length == 0) {
         	return ;
         }
-        Arrays.sort(files, new Comparator<File>() {
-            public int compare(File f1, File f2) {
-                long diff = f1.lastModified() - f2.lastModified();
-                if(diff <0) {
-                	return 1;
-                }
-                if(diff >0) {
-                	return -1;
-                }
-                return 0;
-            }
-
-            public boolean equals(Object obj) {
-                return true;
-            }
-
-        });
+//        Arrays.sort(files, new Comparator<File>() {
+//            public int compare(File f1, File f2) {
+//                long diff = f1.lastModified() - f2.lastModified();
+//                if(diff <0) {
+//                	return 1;
+//                }
+//                if(diff >0) {
+//                	return -1;
+//                }
+//                return 0;
+//            }
+//
+//            public boolean equals(Object obj) {
+//                return true;
+//            }
+//
+//        });
         List<File> fileList = new ArrayList<File>();
         fileList.addAll(Arrays.asList(files));
         System.out.println("文件夹扫描完毕." + fileList.size());

@@ -1,23 +1,22 @@
 package com.my.crawler.common;
 
-import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.InetSocketAddress;
 import java.net.MalformedURLException;
-import java.net.Proxy;
 import java.net.URL;
 import java.nio.file.Files;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.Iterator;
-import java.util.LinkedHashSet;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import org.eclipse.core.runtime.IPath;
@@ -25,14 +24,74 @@ import org.eclipse.core.runtime.Path;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
-import com.alibaba.fastjson.JSONObject;
 
 public class 解析微博网页输出到json文件并下载图片 {
 	public static void main(String[] args) throws IOException {
 		File outputFolder = new File("D:\\weibo\\袁姗姗");
-		outputFolder = new File("D:\\weibo\\袁冰妍工作室");
-		downloadFromFolder(outputFolder);
+		outputFolder = new File("D:\\weibo\\虞书欣");
+		outputFolder = new File("D:\\weibo\\虞书欣工作室");
+		outputFolder = new File("D:\\weibo\\董璇");
+		outputFolder = new File("D:\\weibo\\李菲儿工作室");
+		outputFolder = new File("D:\\weibo\\张曼源");
+		outputFolder = new File("D:\\weibo\\徐娇");
+//		outputFolder = new File("D:\\weibo\\孙耀琦");
+//		outputFolder = new File("D:\\weibo\\赵樱子");
+		outputFolder = new File("D:\\weibo\\张歆艺");
+		outputFolder = new File("D:\\weibo\\张嘉倪");
+		outputFolder = new File("D:\\weibo\\赵露思");
+		outputFolder = new File("D:\\weibo\\李菲儿");
+		outputFolder = new File("D:\\weibo\\李菲儿工作室");
+		outputFolder = new File("D:\\weibo\\赵露思工作室");
+		outputFolder = new File("D:\\weibo\\宋妍霏工作室");
 
+		downloadFromFolder(outputFolder);
+	}
+
+	static class MonthUrl {
+		String month;
+		Set<String> arr;
+
+		public void setMonth(String month) {
+			this.month = month;
+		}
+
+		public String getMonth() {
+			return month;
+		}
+
+		public void setArr(Set<String> arr) {
+			this.arr = arr;
+		}
+
+		public Set<String> getArr() {
+			return arr;
+		}
+
+		public static Map<String, MonthUrl> toMap(File jsonLogFile) throws IOException {
+			JSONArray jsonArrayBak = getImgMap(jsonLogFile);
+			List<MonthUrl> list = jsonArrayBak.toJavaList(MonthUrl.class);
+			Map<String, MonthUrl> map = new LinkedHashMap<>();
+			for (MonthUrl monthUrl : list) {
+				map.put(monthUrl.month, monthUrl);
+			}
+			return map;
+		}
+
+		public static Collection<MonthUrl> mergeMap(Map<String, MonthUrl> bakMap, Map<String, MonthUrl> newMap) {
+			if (bakMap == null) {
+				return newMap.values();
+			}
+			for (Entry<String, MonthUrl> entry : bakMap.entrySet()) {
+				String month = entry.getKey();
+				MonthUrl monthUrl = entry.getValue();
+				if (newMap.containsKey(month)) {
+					monthUrl.getArr().addAll(newMap.get(month).getArr());
+					newMap.remove(month);
+				}
+			}
+			bakMap.putAll(newMap);
+			return bakMap.values();
+		}
 	}
 
 	private static void downloadFromFolder(File outputFolder) throws IOException {
@@ -40,7 +99,16 @@ public class 解析微博网页输出到json文件并下载图片 {
 		if (!jsonLogFile.exists()) {
 			return;
 		}
-		JSONArray jsonArray = getImgMap(jsonLogFile);
+		Map<String, MonthUrl> newMap = MonthUrl.toMap(jsonLogFile);
+		File jsonLogBakFile = new File(outputFolder, "json.log.bak");
+		if (jsonLogBakFile.exists()) {
+			Map<String, MonthUrl> bakMap = MonthUrl.toMap(jsonLogBakFile);
+			Collection<MonthUrl> mergeJsonLog = MonthUrl.mergeMap(bakMap, newMap);
+			String mergeJsonLogString = JSON.toJSONString(mergeJsonLog);
+			System.out.println(mergeJsonLogString);
+			Files.writeString(jsonLogFile.toPath(), mergeJsonLogString);
+		}
+
 		File doneFile = new File(outputFolder, "done.list");
 		List<String> alreadyList;
 		if (doneFile.exists()) {
@@ -49,17 +117,15 @@ public class 解析微博网页输出到json文件并下载图片 {
 			alreadyList = new ArrayList<>();
 		}
 		int i = 0;
-		for (Object object : jsonArray) {
-			JSONObject monthArr = (JSONObject) object;
-			String month = monthArr.getString("month");
-			JSONArray arr = monthArr.getJSONArray("arr");
+		for(MonthUrl monthUrl: newMap.values()) {
+			String month = monthUrl.getMonth();
+			Set<String> arr = monthUrl.getArr();
 			System.out.println(month);
 			System.out.println(arr);
 
 			System.out.println("总大小: " + arr.size());
-			Iterator<Object> iterator = arr.iterator();
+			Iterator<String> iterator = arr.iterator();
 			while (iterator.hasNext()) {
-
 				File monthFolder = new File(outputFolder, month);
 				if (!monthFolder.exists()) {
 					monthFolder.mkdir();

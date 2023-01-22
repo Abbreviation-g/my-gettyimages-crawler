@@ -1,0 +1,17 @@
+// https://whentai.com/search/boruto
+
+
+
+var jsonArr = [];
+var img_holder =document.getElementsByClassName("img-holder ");
+for(var i=0;i<img_holder.length;i++){
+	var holder = img_holder[i];
+	var a = holder.getElementsByTagName("a")[0];
+	var url = a.getAttribute("data-wm");
+	var data_bg=a.getAttribute("data-bg");
+	var url_bak = data_bg.substring(data_bg.indexOf("(")+1, data_bg.indexOf(")"));
+
+	var title = holder.parentElement.getElementsByClassName("h5 entry-title mb-0")[0].innerText.trim();
+	jsonArr.push({"title":title, "url":url,"url_bak":url_bak});
+}
+JSON.stringify(jsonArr)

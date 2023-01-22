@@ -1,0 +1,30 @@
+var monthUrlsMap=[];
+
+var eles = document.getElementsByClassName("S_txt2 photo_face"); 
+for(var i=0;i<eles.length;i++) {
+	var ele = eles[i];
+	var monthStr = ele.textContent;
+	if(monthStr.indexOf("年") ==-1){
+		monthStr = "2022年"+monthStr;
+	}
+	
+	var imgs = ele.parentElement.getElementsByTagName("img");
+	var urlArr = [];
+	for(var j=0;j<imgs.length;j++) {
+		var img = imgs[j];
+		if(img.getAttribute("class") != "photo_pict"){
+			continue;
+		}
+		var url = img.getAttribute("src");
+		url = url.replace("thumb300","large")
+		url = "https:"+url;
+		urlArr.push(url);
+	}
+	
+	var json = {"month":monthStr,"arr":urlArr};
+	console.log(json);
+	monthUrlsMap.push(json);
+}
+
+console.log("\n\n")
+console.log(JSON.stringify(monthUrlsMap))

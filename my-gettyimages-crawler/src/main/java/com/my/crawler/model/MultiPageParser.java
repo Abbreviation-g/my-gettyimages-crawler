@@ -13,6 +13,8 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import com.gargoylesoftware.htmlunit.FailingHttpStatusCodeException;
 import com.gargoylesoftware.htmlunit.Page;
 import com.gargoylesoftware.htmlunit.WebClient;
+import com.gargoylesoftware.htmlunit.html.DomNodeList;
+import com.gargoylesoftware.htmlunit.html.HtmlAnchor;
 import com.gargoylesoftware.htmlunit.html.HtmlElement;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
 
@@ -27,12 +29,13 @@ public class MultiPageParser {
 		this.url = url;
 		this.imgUrlList = new LinkedHashSet<>();
 	}
-	
-	public void parsePage(IProgressMonitor monitor) {
-		monitor.beginTask("正在解析"+url, IProgressMonitor.UNKNOWN);
-		System.out.println("PageParser" + "-->>"+url);
-		
-		HtmlPage htmlPage = getHtmlPage(webClient, url,monitor);
+
+	public void parsePage(IProgressMonitor monitor)
+			throws FailingHttpStatusCodeException, MalformedURLException, IOException {
+		monitor.beginTask("正在解析" + url, IProgressMonitor.UNKNOWN);
+		System.out.println("PageParser" + "-->>" + url);
+
+		HtmlPage htmlPage = getHtmlPage(webClient, url, monitor);
 		initImgList(htmlPage, monitor);
 	}
 
@@ -63,32 +66,49 @@ public class MultiPageParser {
 		}
 		return null;
 	}
-	
-	protected void initImgList(HtmlPage htmlPage, IProgressMonitor monitor) {
+
+	protected void initImgList(HtmlPage htmlPage, IProgressMonitor monitor)
+			throws FailingHttpStatusCodeException, MalformedURLException, IOException {
 		if (monitor.isCanceled() || htmlPage == null) {
 			return;
 		}
 
 		HtmlElement document = htmlPage.getDocumentElement();
-		this.imgUrlList.addAll(new SinglePageParser(document).getImgUrlList());
-		//search-pagination__button search-pagination__button--next
-		List<HtmlElement> aElements = document.getElementsByAttribute("a", "class", "search-pagination__button search-pagination__button--next");
-		if(aElements!= null && aElements.size()==1) {
-			HtmlElement aElement = aElements.get(0);
-			String nextPageHref = aElement.getAttribute("href");
-			nextPageHref = url.getProtocol()+"://"+url.getHost()+"/"+nextPageHref;
-			
-			try {
-				MultiPageParser pageParser = new MultiPageParser(webClient, new URL(nextPageHref));
-				pageParser.parsePage(monitor);
-				this.imgUrlList.addAll(pageParser.getImgUrlList());
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+
+		List<HtmlElement> imgPageEles = document.getElementsByAttribute("a", "class",
+				"MosaicAsset-module__link___wwW2J");
+		for (HtmlElement htmlElement : imgPageEles) {
+			HtmlAnchor anchor = (HtmlAnchor) htmlElement;
+			String imgPageUrl = "https://www.gettyimages.com" + anchor.getHrefAttribute();
+			HtmlPage imgPage = webClient.getPage(imgPageUrl);
+			HtmlElement imgPageDoc = imgPage.getDocumentElement();
+			List<HtmlElement> pictureEles = imgPageDoc.getElementsByAttribute("picture", "data-testid", "hero-picture");
+			HtmlElement pictureEle = pictureEles.get(0);
+			DomNodeList<HtmlElement> sourceEles = pictureEle.getElementsByTagName("source");
+			HtmlElement lastSourceEle = sourceEles.get(sourceEles.getLength() - 1);
+			String srcsetImgUrl = lastSourceEle.getAttribute("srcset");
+			this.imgUrlList.add(srcsetImgUrl);
 		}
-		
+
+//		this.imgUrlList.addAll(new SinglePageParser(document).getImgUrlList());
+//		//search-pagination__button search-pagination__button--next
+//		List<HtmlElement> aElements = document.getElementsByAttribute("a", "class", "search-pagination__button search-pagination__button--next");
+//		if(aElements!= null && aElements.size()==1) {
+//			HtmlElement aElement = aElements.get(0);
+//			String nextPageHref = aElement.getAttribute("href");
+//			nextPageHref = url.getProtocol()+"://"+url.getHost()+"/"+nextPageHref;
+//			
+//			try {
+//				MultiPageParser pageParser = new MultiPageParser(webClient, new URL(nextPageHref));
+//				pageParser.parsePage(monitor);
+//				this.imgUrlList.addAll(pageParser.getImgUrlList());
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//			}
+//		}
+
 	}
-	
+
 	public Set<String> getImgUrlList() {
 		return imgUrlList;
 	}
