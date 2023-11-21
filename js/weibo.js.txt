@@ -10,7 +10,7 @@ for(var i=0;i<months.length;i++) {
 		yearText = "2023";
 	}
 	var monthText = monthChilren[0].textContent.trim();
-	var monthStr = yearText +"?"+ monthText;
+	var monthStr = yearText +"年"+ monthText;
 	console.log(monthStr)
 
 	var parent = month.parentElement;

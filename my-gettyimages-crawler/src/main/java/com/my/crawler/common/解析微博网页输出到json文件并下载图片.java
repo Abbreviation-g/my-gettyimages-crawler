@@ -11,6 +11,7 @@ import java.net.URL;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
@@ -42,7 +43,122 @@ public class 解析微博网页输出到json文件并下载图片 {
 		outputFolder = new File("D:\\weibo\\李菲儿");
 		outputFolder = new File("D:\\weibo\\李菲儿工作室");
 		outputFolder = new File("D:\\weibo\\赵露思工作室");
-		outputFolder = new File("D:\\weibo\\宋妍霏工作室");
+		outputFolder = new File("D:\\weibo\\吴千语工作室");
+		outputFolder = new File("D:\\weibo\\吴千语");
+		outputFolder = new File("D:\\weibo\\郝娉婷");
+		outputFolder = new File("D:\\weibo\\陆翊");
+//		outputFolder = new File("D:\\weibo\\周依然");
+		outputFolder = new File("D:\\weibo\\程潇");
+		outputFolder = new File("D:\\weibo\\程潇工作室");
+//		outputFolder = new File("D:\\weibo\\徐梓钧");
+		outputFolder = new File("D:\\weibo\\袁雨萱");
+		outputFolder = new File("D:\\weibo\\潘敏");
+		outputFolder = new File("D:\\weibo\\洪司洋");
+		outputFolder = new File("D:\\weibo\\yesyanbaby");
+		outputFolder = new File("D:\\weibo\\阮巨");
+		outputFolder = new File("D:\\weibo\\oh-大大kimi");
+//		outputFolder = new File("D:\\weibo\\程潇安利星球");
+		outputFolder = new File("D:\\weibo\\王秀竹");
+		outputFolder = new File("D:\\weibo\\黄尧官方资讯博");
+		outputFolder = new File("D:\\weibo\\李凯馨");
+		outputFolder = new File("D:\\weibo\\刘美彤");
+		outputFolder = new File("D:\\weibo2\\林允");
+		outputFolder = new File("D:\\weibo2\\艾晓琪");
+		outputFolder = new File("D:\\weibo2\\牟星");
+		outputFolder = new File("D:\\weibo2\\赵蕴卓");
+		outputFolder = new File("D:\\weibo2\\刘玮婷");
+		outputFolder = new File("D:\\weibo2\\一个蟹蟹梨");
+		outputFolder = new File("D:\\weibo2\\马泽涵");
+		outputFolder = new File("D:\\weibo\\周放");
+		outputFolder = new File("D:\\weibo\\娜扎的天鹅颈");
+//		outputFolder = new File("D:\\weibo\\一个蟹蟹梨");
+		outputFolder = new File("D:\\weibo\\张婧仪工作室");
+//		outputFolder = new File("D:\\weibo\\张婧怡");
+		outputFolder = new File("D:\\weibo\\张天爱");
+
+		outputFolder = new File("D:\\weibo\\明星生图Martin");
+		outputFolder = new File("D:\\weibo\\徐小舒");
+
+//		outputFolder = new File("D:\\weibo\\Nebulae丨徐璐");
+//		outputFolder = new File("D:\\weibo\\林逸欣");
+//		outputFolder = new File("D:\\weibo\\林志玲");
+//		outputFolder = new File("D:\\weibo\\林志玲工作室");
+//		outputFolder = new File("D:\\weibo\\谭卓");
+//		outputFolder = new File("D:\\weibo\\谭卓工作室");
+//		outputFolder = new File("D:\\weibo\\赵今麦工作室");
+
+		outputFolder = new File("D:\\weibo\\林允");
+		outputFolder = new File("D:\\weibo\\徐璐");
+		outputFolder = new File("D:\\weibo\\徐娇");
+//		outputFolder = new File("D:\\weibo\\徐娇");
+		outputFolder = new File("D:\\weibo\\唐艺昕");
+		outputFolder = new File("D:\\weibo\\唐艺昕工作室");
+
+		outputFolder = new File("D:\\weibo\\李凯馨");
+//		outputFolder = new File("D:\\weibo\\蒋依依");
+//		outputFolder = new File("D:\\weibo\\陈梦儿");
+		outputFolder = new File("D:\\weibo\\吴宣仪工作室");
+//		outputFolder = new File("D:\\weibo\\孙晓伦");
+
+//		outputFolder = new File("D:\\weibo\\娜扎");
+//		outputFolder = new File("D:\\weibo\\娜扎工作室");
+//		outputFolder = new File("D:\\weibo\\赵今麦");
+//		outputFolder = new File("D:\\weibo\\吴宣仪");
+//		outputFolder = new File("D:\\weibo\\张歆艺");
+//		outputFolder = new File("D:\\weibo\\王卓琪");
+//		outputFolder = new File("D:\\weibo\\张彤");
+		outputFolder = new File("D:\\weibo\\李依晓");
+		outputFolder = new File("D:\\weibo\\代斯");
+//		outputFolder = new File("D:\\weibo\\斯人轨迹丨代斯");	
+//		outputFolder = new File("D:\\weibo\\蒋梦婕");
+//		outputFolder = new File("D:\\weibo\\蒋梦婕工作室");
+//		outputFolder = new File("D:\\weibo\\欧阳娜娜");
+		outputFolder = new File("D:\\weibo\\程潇工作室");
+		outputFolder = new File("D:\\weibo\\程潇");
+		outputFolder = new File("D:\\weibo\\关晓彤");
+		outputFolder = new File("D:\\weibo\\景甜");
+		outputFolder = new File("D:\\weibo\\景甜工作室");
+		outputFolder = new File("D:\\weibo\\关晓彤工作室");
+		outputFolder = new File("D:\\weibo\\赵蕴卓");
+		outputFolder = new File("D:\\weibo\\女明星生图");
+		outputFolder = new File("D:\\weibo\\欧阳娜娜工作室");
+		outputFolder = new File("D:\\weibo\\乔欣");
+		outputFolder = new File("D:\\weibo\\森泽佳奈_real");
+		outputFolder = new File("D:\\weibo\\柳岩");
+		outputFolder = new File("D:\\weibo\\乔欣工作室");
+		outputFolder = new File("D:\\weibo\\森泽佳奈OFFICIAL");
+		outputFolder = new File("D:\\weibo\\李若嘉");
+		outputFolder = new File("D:\\weibo\\娜然Naran");
+		outputFolder = new File("D:\\weibo\\张蓝心");
+		outputFolder = new File("D:\\weibo\\梁洁");
+		outputFolder = new File("D:\\weibo\\王星辰");
+		outputFolder = new File("D:\\weibo\\梁洁工作室");
+		outputFolder = new File("D:\\weibo\\娜扎工作室");
+		outputFolder = new File("D:\\weibo\\娜扎");
+		outputFolder = new File("D:\\weibo\\橘玛丽_real");
+		outputFolder = new File("D:\\weibo\\yesyanbaby");
+		outputFolder = new File("D:\\weibo\\张馨予工作室");
+		outputFolder = new File("D:\\weibo\\江疏影");
+		outputFolder = new File("D:\\weibo\\江疏影工作室");
+//		outputFolder = new File("D:\\weibo\\杨超越");
+		outputFolder = new File("D:\\weibo\\白鹿");
+		outputFolder = new File("D:\\weibo\\袁姗姗");
+//		outputFolder = new File("D:\\weibo\\迪丽热巴工作室");
+//		outputFolder = new File("D:\\weibo\\迪丽热巴");
+		outputFolder = new File("D:\\weibo\\赵露思工作室");
+//		outputFolder = new File("D:\\weibo\\赵露思");
+		outputFolder = new File("D:\\weibo\\苏青");
+		outputFolder = new File("D:\\weibo\\苏青工作室");
+		outputFolder = new File("D:\\weibo\\孙怡");
+		outputFolder = new File("D:\\weibo\\艾晓琪");
+		outputFolder = new File("D:\\weibo\\杨幂");
+		outputFolder = new File("D:\\weibo\\刘诗诗");
+		outputFolder = new File("D:\\weibo\\杨幂工作室");
+		outputFolder = new File("D:\\weibo\\咕噜小_");
+
+		outputFolder = new File("D:\\weibo\\孙怡工作室");
+//		outputFolder = new File("D:\\weibo\\宋祖儿");
+//		outputFolder = new File("D:\\weibo\\宋祖儿工作室");
 
 		downloadFromFolder(outputFolder);
 	}
@@ -70,6 +186,7 @@ public class 解析微博网页输出到json文件并下载图片 {
 		public static Map<String, MonthUrl> toMap(File jsonLogFile) throws IOException {
 			JSONArray jsonArrayBak = getImgMap(jsonLogFile);
 			List<MonthUrl> list = jsonArrayBak.toJavaList(MonthUrl.class);
+			Collections.reverse(list);
 			Map<String, MonthUrl> map = new LinkedHashMap<>();
 			for (MonthUrl monthUrl : list) {
 				map.put(monthUrl.month, monthUrl);
@@ -117,7 +234,7 @@ public class 解析微博网页输出到json文件并下载图片 {
 			alreadyList = new ArrayList<>();
 		}
 		int i = 0;
-		for(MonthUrl monthUrl: newMap.values()) {
+		for (MonthUrl monthUrl : newMap.values()) {
 			String month = monthUrl.getMonth();
 			Set<String> arr = monthUrl.getArr();
 			System.out.println(month);
