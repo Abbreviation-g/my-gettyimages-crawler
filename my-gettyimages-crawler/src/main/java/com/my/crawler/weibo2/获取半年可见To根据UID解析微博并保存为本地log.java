@@ -7,22 +7,21 @@ import java.util.List;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
-import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.serializer.SerializerFeature;
-import com.my.crawler.weibo2.GetFollowers.UserEntity;
+import com.my.crawler.weibo2.GetHalfYearFollowers.UserEntity;
 
-public class 获取关注列表To根据UID解析微博并保存为本地log {
-	private static final boolean OVERWRITE = false;
+public class 获取半年可见To根据UID解析微博并保存为本地log {
+	private static final boolean OVERWRITE = true;
 
 	public static void main(String[] args) throws IOException {
 		File folder = new File("F:\\weibo_log");
 
-		File followFile = new File(folder, "follow.log");
+		File followFile = new File(folder, "半年可见.log");
 		List<UserEntity> userEntities = null;
 		if (followFile.exists()) {
 			userEntities = readFollows(followFile);
 		} else {
-			userEntities = GetFollowers.start();
+			userEntities = GetHalfYearFollowers.start();
 			saveFollows(userEntities, followFile);
 		}
 

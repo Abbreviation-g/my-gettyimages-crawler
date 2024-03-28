@@ -1,4 +1,4 @@
-package com.my.crawler.weibo2;
+package com.my.crawler.weibo;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -29,7 +29,7 @@ public class WeiboImageDownloader {
 		String fileName = urlStr.substring(index + 1, endIndex);
 		return fileName;
 	}
-	
+
 	public static String getImageName(String urlStr, String dateStr) {
 		return dateStr + "-" + getImageName(urlStr);
 	}
@@ -68,6 +68,10 @@ public class WeiboImageDownloader {
 			// 得到输入流
 			InputStream inputStream = conn.getInputStream();
 			byte[] getData = readInputStream(inputStream);
+			File folder = imgFile.getParentFile();
+			if (!folder.exists()) {
+				folder.mkdirs();
+			}
 			try (FileOutputStream fos = new FileOutputStream(imgFile)) {
 				fos.write(getData);
 			}

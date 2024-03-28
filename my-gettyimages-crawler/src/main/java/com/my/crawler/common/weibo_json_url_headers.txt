@@ -1,0 +1,17 @@
+GET /ajax/statuses/mymblog?uid=7796015144&page=2&feature=0 HTTP/2
+Host: weibo.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:121.0) Gecko/20100101 Firefox/121.0
+Accept: application/json, text/plain, */*
+Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+Accept-Encoding: gzip, deflate, br
+X-Requested-With: XMLHttpRequest
+client-version: v2.44.42
+server-version: v2023.12.21.3
+X-XSRF-TOKEN: hs-viXeIViZNGmdoFxUPgtkk
+Connection: keep-alive
+Referer: https://weibo.com/n/%E6%98%8E%E6%98%9F%E7%B4%A0%E4%BA%BA--
+Cookie: ALF=1705647660; SINAGLOBAL=5564459443412.725.1691551520655; ULV=1701161217547:7:1:1:5703474673646.289.1701161217318:1698386282815; SCF=AifPxbBkS5LEGO2DDos3PdBIiJETOMmkyQOot4mO5x2FxhAPE69w2uDOzGO94t9eWh4nNABbH8Xn7di1-6O0tQQ.; UOR=,,www.baidu.com; SUB=_2A25IhuF9DeRhGeVI61ET9SjKwjmIHXVr-ny1rDV8PUNbmtAGLRn4kW9NTAOtpi1BTgUnoUfPnGW0xOmpKQLrUWIt; SUBP=0033WrSXqPxfM725Ws9jqgMF55529P9D9WFOy.hqXqwQGpGTla2erusc5JpX5KMhUgL.FoeceheESKqc1K-2dJLoIEBLxKqLBKzLBKqLxK.L1hqL1KzLxK-LB.qL1KzLxKnLB.qL1-et; XSRF-TOKEN=hs-viXeIViZNGmdoFxUPgtkk; SSOLoginState=1698732499; _s_tentry=weibo.com; Apache=5703474673646.289.1701161217318; WBPSESS=XMMIwdETR_JT96BLYlgiKdRbtXi8_udAJVxUz_5SaKY9HhqTHcFvn3klk_-W9c2Fll16R18jgx2IM9aZcRL9KSg3sJYC-u_gVHacENTl91MqRqOT4jlDO6m5Ct4lAqRiBiB7gW5rCxMlWBh7niedZQ==
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+TE: trailers

@@ -1,4 +1,4 @@
-package com.my.crawler.weibo2;
+package com.my.crawler.weibo;
 
 import java.io.File;
 import java.io.IOException;
@@ -9,23 +9,14 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
-import java.util.TreeMap;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.alibaba.fastjson.serializer.SerializerFeature;
 
 public class WeiboArrayToPicsVideos {
-	public static void main(String[] args) throws IOException {
-		String folderPath = "F:\\weibo_log\\童瑶";
-		File weiboLogFile = new File(folderPath, Constants.WEIBO_ARRAY_FILE_NAME);
-		JSONObject jsonObject = weiboArrayLogToPicsVideos(weiboLogFile);
-		System.out.println(jsonObject.toString(SerializerFeature.PrettyFormat));
-	}
-
 	public static JSONObject mergeOldAndNew(JSONObject oldObject, JSONObject newObject) {
-		JSONObject allWeiboPicsVideos = new JSONObject(new TreeMap<>());
+		JSONObject allWeiboPicsVideos = new JSONObject();
 
 		Iterator<String> oldIterator = oldObject.keySet().iterator();
 		while (oldIterator.hasNext()) {
@@ -39,7 +30,7 @@ public class WeiboArrayToPicsVideos {
 			allWeiboPicsVideos.put(newId, newObject.get(newId));
 		}
 
-		return allWeiboPicsVideos;
+		return oldObject;
 	}
 
 	public static JSONObject weiboArrayLogToPicsVideos(File weiboLogFile) throws IOException {
@@ -52,7 +43,7 @@ public class WeiboArrayToPicsVideos {
 	}
 
 	public static JSONObject weiboArrayToPicsVideos(JSONArray array) {
-		JSONObject allWeiboPicsVideos = new JSONObject(new TreeMap<>());
+		JSONObject allWeiboPicsVideos = new JSONObject();
 		for (int i = 0; i < array.size(); i++) {
 			JSONObject object = array.getJSONObject(i);
 
@@ -67,16 +58,16 @@ public class WeiboArrayToPicsVideos {
 			if (videos.isEmpty() && pics.isEmpty()) {
 				continue;
 			}
-			String text = object.getString(Constants.TEXT_ID);
+			String text = object.getString("text");
 
 			JSONObject singleObject = new JSONObject();
 			if (!videos.isEmpty()) {
-				singleObject.put(Constants.VIDEOS_ID, videos);
+				singleObject.put("videos", videos);
 			}
 			if (!pics.isEmpty()) {
-				singleObject.put(Constants.PICS_ID, pics);
+				singleObject.put("pics", pics);
 			}
-			singleObject.put(Constants.TEXT_ID, text);
+			singleObject.put("text", text);
 			allWeiboPicsVideos.put(dateId, singleObject);
 		}
 		return allWeiboPicsVideos;
@@ -144,7 +135,7 @@ public class WeiboArrayToPicsVideos {
 		}
 	}
 
-	private static void getVideosPics(JSONObject object, List<String> videos, List<String> pics) {
+	private static void getVideosPics(JSONObject object, List<String> pics, List<String> videos) {
 //		mix_media_info
 		JSONObject mix_media_info = object.getJSONObject("mix_media_info");
 		if (mix_media_info == null) {

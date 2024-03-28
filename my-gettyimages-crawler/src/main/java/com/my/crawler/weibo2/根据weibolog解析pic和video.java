@@ -10,6 +10,8 @@ import com.alibaba.fastjson.serializer.SerializerFeature;
 public class 根据weibolog解析pic和video {
 	public static void main(String[] args) throws IOException {
 		start(new File("F:\\weibo_log\\-傅晶-"));
+		start(new File("F:\\weibo_log\\袁姗姗"));
+		start(new File("D:\\weibo\\梦醒忒远"));
 	}
 
 	public static void start(File folder) throws IOException {

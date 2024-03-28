@@ -1,4 +1,4 @@
-package com.my.crawler.weibo2;
+package com.my.crawler.common;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
@@ -25,7 +25,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 
-public class 微博视频下载 {
+public class 微博视频json解析输出到videolog {
 	private static List<String> videoList = new ArrayList<>();
 
 	public static void main(String[] args) throws IOException {
@@ -70,13 +70,7 @@ public class 微博视频下载 {
 		folderPath = "D:\\weibo\\1saye";
 		uid = "1662262590";
 		folderPath = "D:\\weibo\\张予曦";
-		uid = "3259102532";
-		folderPath = "F:\\weibo_log\\·1saye";
 
-		uid = "1352611904";
-		folderPath = "F:\\weibo_log\\-傅晶-";
-		uid = "2646681810";
-		folderPath = "F:\\weibo\\林允Jelly\\";
 
 		start(uid, folderPath);
 	}
@@ -290,7 +284,7 @@ public class 微博视频下载 {
 
 	static List<Header> readHeader() throws IOException {
 		List<Header> headers = new ArrayList<>();
-		InputStream stream = 微博视频下载.class.getResourceAsStream("weibo_json_url_headers.txt");
+		InputStream stream = 微博视频json解析输出到videolog.class.getResourceAsStream("weibo_json_url_headers.txt");
 		BufferedReader reader = new BufferedReader(new InputStreamReader(stream));
 		String line = reader.readLine();
 

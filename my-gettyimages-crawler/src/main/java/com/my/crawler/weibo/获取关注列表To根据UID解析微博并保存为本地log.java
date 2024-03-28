@@ -1,4 +1,4 @@
-package com.my.crawler.weibo2;
+package com.my.crawler.weibo;
 
 import java.io.File;
 import java.io.IOException;
@@ -7,9 +7,10 @@ import java.util.List;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
-import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.serializer.SerializerFeature;
-import com.my.crawler.weibo2.GetFollowers.UserEntity;
+import com.my.crawler.weibo.GetFollowers.UserEntity;
+import static com.my.crawler.weibo.根据weibolog解析pic和video.*;
+import static com.my.crawler.weibo.根据UID解析微博并保存为本地log.*;
 
 public class 获取关注列表To根据UID解析微博并保存为本地log {
 	private static final boolean OVERWRITE = false;
@@ -33,11 +34,12 @@ public class 获取关注列表To根据UID解析微博并保存为本地log {
 			System.out.println("id: " + id + "\t name: " + screen_name);
 
 			File followFolder = new File(folder, screen_name);
-			File weiboLogFile = new File(followFolder, Constants.WEIBO_ARRAY_FILE_NAME);
-			if (weiboLogFile.exists() && !OVERWRITE) {
-				continue;
+			File weiboLogFile = new File(followFolder, WEIBO_LOG_FILENAME);
+			if (!weiboLogFile.exists() || OVERWRITE) {
+				JSONArray array = createWeiLogFile(id, followFolder.getPath());
+				splitWeibosToDateIdFolder(array, followFolder);
 			} else {
-				根据UID扫描所有weibo并解析pic和video.start(id, followFolder);
+				splitWeibosToDateIdFolder(followFolder);
 			}
 			try {
 				Thread.sleep(2 * 1000);

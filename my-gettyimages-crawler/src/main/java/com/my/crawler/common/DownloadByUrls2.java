@@ -14,7 +14,6 @@ import java.net.SocketTimeoutException;
 import java.net.URL;
 import java.nio.file.Files;
 
-
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 
@@ -24,7 +23,7 @@ public class DownloadByUrls2 {
 
 		String lastUrl;
 		int start = 1;
-		
+
 		lastUrl = "https://fappeningbook.com/photos/k/a/kate-upton/3000/2393.jpg";
 //		lastUrl = "https://fappeningbook.com/photos/z/e/zendaya/2000/1845.jpg";
 		lastUrl = "https://fappeningbook.com/photos/s/c/scarlett-johansson/3000/2689.jpg";
@@ -215,7 +214,7 @@ public class DownloadByUrls2 {
 		lastUrl = "https://fappeningbook.com/photos/j/e/jessica-moore/1000/45.jpg";
 		lastUrl = "https://fappeningbook.com/photos/r/e/rebecca-brooke/1000/39.jpg";
 		lastUrl = "https://fappeningbook.com/photos/l/a/la-alemana/1000/54.jpg";
-		
+
 		lastUrl = "https://fappeningbook.com/photos/a/n/anne-hathaway/2000/1476.jpg";
 		lastUrl = "https://fappeningbook.com/photos/s/a/sandra-bullock/1000/320.jpg";
 		lastUrl = "https://fappeningbook.com/photos/l/a/larsen-thompson/1000/265.jpg";
@@ -244,14 +243,14 @@ public class DownloadByUrls2 {
 //		lastUrl = "https://fappeningbook.com/photos/l/a/laura-marano/1000/25.jpg";
 //		lastUrl = "https://fappeningbook.com/photos/s/t/stacy-keibler/1000/196.jpg";
 //		lastUrl = "https://fappeningbook.com/photos/i/r/irina-shayk/4000/3112.jpg";
-		
+
 		lastUrl = "https://fappeningbook.com/photos/a/n/annabelle-wallis/1000/200.jpg";
 		lastUrl = "https://fappeningbook.com/photos/s/o/sofia-boutella/1000/59.jpg";
 		lastUrl = "https://fappeningbook.com/photos/c/h/charlotte-hope/1000/138.jpg";
 		lastUrl = "https://fappeningbook.com/photos/l/e/lena-headey/1000/362.jpg";
 		lastUrl = "https://fappeningbook.com/photos/l/i/lily-james/2000/1438.jpg";
 		lastUrl = "https://fappeningbook.com/photos/e/l/elizabeth-debicki/1000/159.jpg";
-		
+
 		lastUrl = "https://fappeningbook.com/photos/m/e/meghan-flather/1000/15.jpg";
 		lastUrl = "https://fappeningbook.com/photos/l/i/lilly-krug/1000/70.jpg";
 		lastUrl = "https://fappeningbook.com/photos/s/a/sasha-luss/1000/164.jpg";
@@ -342,7 +341,6 @@ public class DownloadByUrls2 {
 //		lastUrl = "https://fappeningbook.com/photos/l/a/laura-sophie-mueller/1000/22.jpg";
 //		lastUrl = "https://fappeningbook.com/photos/m/a/madeleine-stowe/1000/129.jpg";
 
-		
 		// 2023年3月17日
 		lastUrl = "https://fappeningbook.com/photos/s/a/sabrina-carpenter/2000/1085.jpg";
 //		lastUrl = "https://fappeningbook.com/photos/e/s/estella-warren/1000/166.jpg";
@@ -378,13 +376,13 @@ public class DownloadByUrls2 {
 		lastUrl = "https://fappeningbook.com/photos/a/b/abbie-cornish/1000/325.jpg";
 		lastUrl = "https://fappeningbook.com/photos/a/n/anna-friel/1000/418.jpg";
 		lastUrl = "https://fappeningbook.com/photos/n/a/natalie-martinez/1000/332.jpg";
-		
+
 //		lastUrl = "https://fappeningbook.com/photos/e/m/emily-ratajkowski/14000/13091.jpg";
 		lastUrl = "https://fappeningbook.com/photos/e/m/emily-ratajkowski/14000/13727.jpg";
 		lastUrl = "https://fappeningbook.com/photos/t/a/tanit-phoenix/1000/109.jpg";
 		lastUrl = "https://fappeningbook.com/photos/l/a/lauren-cohan/1000/391.jpg";
 		lastUrl = "https://fappeningbook.com/photos/t/a/tanya-van-graan/1000/53.jpg";
-		
+
 //		lastUrl = "https://fappeningbook.com/photos/a/m/amber-heard/2000/1868.jpg";
 		lastUrl = "https://fappeningbook.com/photos/a/m/amber-heard/2000/1936.jpg";
 		lastUrl = "https://fappeningbook.com/photos/s/h/shailene-woodley/1000/918.jpg";
@@ -595,12 +593,116 @@ public class DownloadByUrls2 {
 		start = 1102;
 		lastUrl = "https://fappeningbook.com/photos/f/l/florence-pugh/2000/1910.jpg";
 		start = 1;
-		
-		outputFolder = new File("D:\\output\\fappeningbook.com");
-		
-		
+		lastUrl = "https://fappeningbook.com/photos/s/y/sydney-sweeney/6000/5909.jpg";
+		start = 4960;
+		lastUrl = "https://fappeningbook.com/photos/a/m/amber-heard/3000/2046.jpg";
+		start = 1936;
+		lastUrl = "https://fappeningbook.com/photos/i/r/irina-telicheva/1000/253.jpg";
+		start = 1;
+		lastUrl = "https://fappeningbook.com/photos/t/a/taylor-swift/5000/4693.jpg";
+		start = 3263;
+		lastUrl = "https://fappeningbook.com/photos/r/a/rachel-weisz/1000/431.jpg";
+		start = 211;
+		lastUrl = "https://fappeningbook.com/photos/m/a/marion-cotillard/1000/469.jpg";
+		start = 459;
+		lastUrl = "https://fappeningbook.com/photos/p/e/penelope-cruz/2000/1501.jpg";
+		start = 1488;
+		lastUrl = "https://fappeningbook.com/photos/g/a/gal-gadot/2000/1017.jpg";
+		start = 945;
+		lastUrl = "https://fappeningbook.com/photos/a/n/ana-de-armas/4000/3286.jpg";
+		start = 3190;
+		lastUrl = "https://fappeningbook.com/photos/a/l/alexandra-daddario/3000/2487.jpg";
+		start = 2347;
+		lastUrl = "https://fappeningbook.com/photos/a/l/alessandra-ambrosio/24000/23668.jpg";
+		start = 22848;
+
+//		lastUrl = "https://fappeningbook.com/photos/i/z/izzy-xx/1000/150.jpg";
 //		start = 1;
-		
+//		lastUrl = "https://fappeningbook.com/photos/e/m/emilia-clarke/2000/1408.jpg";
+//		start = 1258;
+//		lastUrl = "https://fappeningbook.com/photos/a/l/alina-becker/6000/5536.jpg";
+//		start = 1;
+//		lastUrl = "https://fappeningbook.com/photos/a/n/anna-shumate/1000/631.jpg";
+//		start = 1;
+//		lastUrl = "https://fappeningbook.com/photos/o/l/olivia-ponton/2000/1469.jpg";
+//		start = 1;
+//		lastUrl = "https://fappeningbook.com/photos/i/z/izabel-goulart/3000/2549.jpg";
+//		start = 1;
+//		lastUrl = "https://fappeningbook.com/photos/a/n/anna-kendrick/1000/550.jpg";
+//		start = 1;
+//		lastUrl = "https://fappeningbook.com/photos/k/i/kiernan-shipka/2000/1244.jpg";
+//		start = 1;
+//		lastUrl = "https://fappeningbook.com/photos/e/l/elizabeth-hurley/2000/1597.jpg";
+//		start = 1;
+//		lastUrl = "https://fappeningbook.com/photos/j/o/josiekopasz/1000/208.jpg";
+//		start = 1;
+//		lastUrl = "https://fappeningbook.com/photos/t/e/terry-richardson/1000/648.jpg";
+//		start = 1;
+//		lastUrl = "https://fappeningbook.com/photos/a/b/abbie-chatfield/1000/462.jpg";
+//		start = 1;
+//		lastUrl = "https://fappeningbook.com/photos/r/a/rachel-zegler/1000/628.jpg";
+//		start = 1;
+//		lastUrl = "https://fappeningbook.com/photos/e/v/evan-rachel-wood/1000/244.jpg";
+//		start = 1;
+//		lastUrl = "https://fappeningbook.com/photos/r/a/rachel-annette-helson/1000/20.jpg";
+//		start = 1;
+//		lastUrl = "https://fappeningbook.com/photos/a/n/anna-shumate/1000/631.jpg";
+//		start = 1;
+//		lastUrl = "https://fappeningbook.com/photos/h/a/hayley-atwell/1000/750.jpg";
+//		start = 1;
+//		lastUrl = "https://fappeningbook.com/photos/t/a/taya-miller/1000/136.jpg";
+//		start = 1;
+//		lastUrl = "https://fappeningbook.com/photos/e/m/emma-stone/1000/675.jpg";
+//		start = 443;
+//		lastUrl = "https://fappeningbook.com/photos/a/n/anya-taylor-joy/3000/2177.jpg";
+//		start = 1399;
+//		lastUrl = "https://fappeningbook.com/photos/a/n/anna-vlasova/1000/839.jpg";
+//		start = 1;
+//		lastUrl = "https://fappeningbook.com/photos/e/m/emily-ratajkowski/17000/16894.jpg";
+//		start = 15331;
+//		lastUrl = "https://fappeningbook.com/photos/s/y/sydney-sweeney/6000/5933.jpg";
+//		start = 5909;
+//		lastUrl = "https://fappeningbook.com/photos/k/i/kimberley-garner/8000/7564.jpg";
+//		start = 7412;
+//		lastUrl = "https://fappeningbook.com/photos/j/o/jordyn-jones/3000/2746.jpg";
+//		start = 2694;
+//		lastUrl = "https://fappeningbook.com/photos/e/l/elsa-hosk/5000/4473.jpg";
+//		start = 3977;
+//		lastUrl = "https://fappeningbook.com/photos/c/a/caroline-vreeland/3000/2424.jpg";
+//		start = 1;
+//		lastUrl = "https://fappeningbook.com/photos/s/o/sophia-thomalla/2000/1350.jpg";
+//		start = 1;
+//		lastUrl = "https://fappeningbook.com/photos/k/r/kristen-stewart/3000/2847.jpg";
+//		start = 2763;
+//		lastUrl = "https://fappeningbook.com/photos/z/e/zendaya/3000/2375.jpg";
+//		start = 2172;
+//		lastUrl = "https://fappeningbook.com/photos/j/e/jessica-alba/4000/3344.jpg";
+//		start = 3106;
+//		lastUrl = "https://fappeningbook.com/photos/s/y/sylvie-meis/7000/6475.jpg";
+//		start = 6351;
+//		lastUrl = "https://fappeningbook.com/photos/a/m/amber-heard/3000/2046.jpg";
+//		start = 1;
+		lastUrl = "https://fappeningbook.com/photos/c/a/caylee-cowan/2000/1770.jpg";
+		start = 1669;
+//		lastUrl = "https://fappeningbook.com/photos/z/e/zendaya/3000/2614.jpg";
+//		start = 2375;
+//		lastUrl = "https://fappeningbook.com/photos/b/e/bella-thorne/15000/14809.jpg";
+//		start = 13871;
+		lastUrl = "https://fappeningbook.com/photos/a/l/alison-brie/2000/1148.jpg";
+		start = 1;
+//		lastUrl = "https://fappeningbook.com/photos/a/l/alison-eastwood/1000/58.jpg";
+//		start = 1;
+//		lastUrl = "https://fappeningbook.com/photos/m/a/madison-beer/7000/6127.jpg";
+//		start = 5696;
+		lastUrl = "https://fappeningbook.com/photos/s/y/sydney-sweeney/7000/6274.jpg";
+		start = 5933;
+		lastUrl = "https://fappeningbook.com/photos/r/o/robin-wright/1000/417.jpg";
+		start = 1;
+
+		outputFolder = new File("D:\\output\\fappeningbook.com");
+
+//		start = 1;
+
 		String[] arr = lastUrl.split("\\/");
 		String title = arr[arr.length - 3];
 
@@ -631,7 +733,7 @@ public class DownloadByUrls2 {
 		URL url = new URL(urlStr);
 		String path = url.getPath();
 		String[] arr = path.split("\\/");
-		String newImgFileName = arr[arr.length-1];
+		String newImgFileName = arr[arr.length - 1];
 
 		File imgFile = new File(saveDir, newImgFileName);
 
