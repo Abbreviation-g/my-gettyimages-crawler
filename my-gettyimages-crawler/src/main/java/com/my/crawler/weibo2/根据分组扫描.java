@@ -8,20 +8,51 @@ import java.util.List;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.serializer.SerializerFeature;
-import com.my.crawler.weibo2.GetHalfYearFollowers.UserEntity;
+import com.my.crawler.weibo2.GroupMembersCrawler.UserEntity;
 
-public class 获取半年可见To根据UID解析微博并保存为本地log {
-	private static final boolean OVERWRITE = true;
-
+public class 根据分组扫描 {
 	public static void main(String[] args) throws IOException {
+//		扫描明星图片();
+		// 扫描半年可见();
+//		扫描生图();
+//		扫描美欧日();
+//		扫描特别关注();
+		扫描网红();
+	}
+
+	public static void 扫描特别关注() throws IOException {
+		start("特别关注.log", GroupMembersCrawler.特别关注分组ID);
+	}
+
+	public static void 扫描明星图片() throws IOException {
+		start("明星图片.log", GroupMembersCrawler.明星图片分组ID);
+	}
+
+	public static void 扫描半年可见() throws IOException {
+		start("半年可见.log", GroupMembersCrawler.半年可见分组ID);
+	}
+
+	public static void 扫描生图() throws IOException {
+		start("生图.log", GroupMembersCrawler.生图分组ID);
+	}
+
+	public static void 扫描美欧日() throws IOException {
+		start("美欧日.log", GroupMembersCrawler.美欧日分组ID);
+	}
+
+	public static void 扫描网红() throws IOException {
+		start("网红.log", "4973738839774902");
+	}
+
+	private static void start(String followFileName, String groupId) throws IOException {
 		File folder = new File("F:\\weibo_log");
 
-		File followFile = new File(folder, "半年可见.log");
+		File followFile = new File(folder, followFileName);
 		List<UserEntity> userEntities = null;
 		if (followFile.exists()) {
 			userEntities = readFollows(followFile);
 		} else {
-			userEntities = GetHalfYearFollowers.start();
+			userEntities = GroupMembersCrawler.startCrawler(groupId);
 			saveFollows(userEntities, followFile);
 		}
 
@@ -32,12 +63,7 @@ public class 获取半年可见To根据UID解析微博并保存为本地log {
 			System.out.println("id: " + id + "\t name: " + screen_name);
 
 			File followFolder = new File(folder, screen_name);
-			File weiboLogFile = new File(followFolder, Constants.WEIBO_ARRAY_FILE_NAME);
-			if (weiboLogFile.exists() && !OVERWRITE) {
-				continue;
-			} else {
-				根据UID扫描所有weibo并解析pic和video.start(id, followFolder);
-			}
+			根据UID扫描所有weibo并解析pic和video.start(id, followFolder);
 			try {
 				Thread.sleep(2 * 1000);
 			} catch (InterruptedException e) {

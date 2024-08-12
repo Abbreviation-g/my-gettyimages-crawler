@@ -1,0 +1,21 @@
+POST /api/graphql HTTP/2
+Host: www.instagram.com
+User-Agent: Mozilla/5.0 (Linux; Android 11; SAMSUNG SM-G973U) AppleWebKit/537.36 (KHTML, like Gecko) SamsungBrowser/14.2 Chrome/87.0.4280.141 Mobile Safari/537.36
+Accept: */*
+Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+Accept-Encoding: gzip, deflate, br
+Content-Type: application/x-www-form-urlencoded
+X-FB-Friendly-Name: PolarisProfilePostsTabContentQuery_connection
+X-CSRFToken: aH1RSz5jsJaN2f70UqDGYpMaEZFNCom6
+X-IG-App-ID: 1217981644879628
+X-FB-LSD: NMeqFWEXOZHZCOsXL4JUNX
+X-ASBD-ID: 129477
+Content-Length: 1391
+Origin: https://www.instagram.com
+Connection: keep-alive
+Referer: https://www.instagram.com/nanaouyang/?hl=en
+Cookie: csrftoken=aH1RSz5jsJaN2f70UqDGYpMaEZFNCom6; dpr=2.625; mid=ZiyH3gALAAFVp7MzlWl8301kDtDU; ig_did=46DF0B55-5672-4128-A611-71454D287B84; ig_nrcb=1; datr=3IcsZux1f3cwci7aRO8LsS-5; rur="NHA\05446532699628\0541745733651:01f7170c75bc92cf22c88be8c88dde267bd42d4ca6c8c570b7ca9253040ecc19113db3d0"; ds_user_id=46532699628; sessionid=46532699628%3AOTGkgK0UuTzXSw%3A25%3AAYeZWVvlBEp9HnQnWHvzH-rDZQcZhhQa_Dh6GOGREA; shbid="8982\05446532699628\0541745730527:01f747233c2fd49f41d6d14441ecd34db339ae9bc7b49a26ef43504405b5db0f45dbce61"; shbts="1714194527\05446532699628\0541745730527:01f79515dffc2e3dd6592e81ef1770c3b2ce38bc7349b6d4e6a36c6a7c8959931766a4a5"; igd_ls=%7B%2217847430547547629%22%3A%7B%22c%22%3A%7B%221%22%3A%22HCwAABb6BRbo3IaZBhMFFtqXhd-XibQ_AA%22%2C%222%22%3A%22GRwVQBxMAAAWARbOoeTiDBYAFs6h5OIMABYoAA%22%7D%2C%22d%22%3A%22c08a99b3-1e7e-4327-9639-29731db2c94f%22%2C%22s%22%3A%221%22%2C%22u%22%3A%22ge6kr0%22%7D%7D
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+TE: trailers

@@ -1,14 +1,8 @@
 package com.my.crawler.weibo2;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
 import java.nio.file.Files;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.http.Header;
@@ -18,7 +12,6 @@ import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
-import org.apache.http.message.BasicHeader;
 import org.apache.http.util.EntityUtils;
 
 import com.alibaba.fastjson.JSON;
@@ -29,8 +22,8 @@ import com.alibaba.fastjson.serializer.SerializerFeature;
 public class 微博收藏json解析输出到favoritelog {
 	public static void main(String[] args) throws IOException {
 		String uid = "3603256695";
-		String folderPath = "D:\\weibo\\梦醒忒远";
-		
+		String folderPath = "F:\\weibo_log\\梦醒忒远";
+
 		start(uid, folderPath);
 	}
 
@@ -58,10 +51,10 @@ public class 微博收藏json解析输出到favoritelog {
 		public void start() throws ClientProtocolException, IOException {
 			this.content = sendGet();
 			System.out.println("-------------------------------------");
-			System.out.println(content);
+//			System.out.println(content);
 			this.contentEntity = parseContent(content);
 		}
-		
+
 		public ContentEntity getContentEntity() {
 			return contentEntity;
 		}
@@ -83,6 +76,7 @@ public class 微博收藏json解析输出到favoritelog {
 				// 使用HttpClient发起请求
 				response = httpClient.execute(httpGet);
 				System.out.println("-------");
+				System.out.println(urlStr);
 				System.out.println(response.getStatusLine());
 
 				// 判断响应状态码是否为200
@@ -91,7 +85,7 @@ public class 微博收藏json解析输出到favoritelog {
 					HttpEntity httpEntity = response.getEntity();
 					String content = EntityUtils.toString(httpEntity, "UTF-8");
 
-					System.out.println(content);
+//					System.out.println(content);
 					return content;
 				} else {
 					return null;
@@ -103,10 +97,6 @@ public class 微博收藏json解析输出到favoritelog {
 				}
 			}
 		}
-
-		public String getContent() {
-			return content;
-		}
 	}
 
 	private static class ContentEntity {
@@ -114,16 +104,17 @@ public class 微博收藏json解析输出到favoritelog {
 	}
 
 	private static class DataEntity {
+		@SuppressWarnings("unused")
 		public int total_number;
 		public JSONArray status;
 	}
 
 	public static void start(String uid, String folderPath) throws IOException {
-		final List<Header> headers = readHeader();
+		final List<Header> headers = Headers.readHeader();
 		final CloseableHttpClient httpClient = HttpClients.createDefault();
 
 		int page = 1;
-		List<String> contents = new ArrayList<>();
+		JSONArray contents = new JSONArray();
 		JSONArray status = new JSONArray();
 		do {
 			Crawler crawler = new Crawler(uid, page, headers, httpClient);
@@ -131,13 +122,16 @@ public class 微博收藏json解析输出到favoritelog {
 			page++;
 
 			status = crawler.getContentEntity().data.status;
-			contents.add(crawler.getContent());
+			contents.addAll(status);
 
 			try {
 				Thread.sleep(2 * 1000);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
+//			if (page >= 3) {
+//				break;
+//			}
 		} while (status != null && !status.isEmpty());
 
 		File folder = new File(folderPath);
@@ -145,36 +139,19 @@ public class 微博收藏json解析输出到favoritelog {
 			folder.mkdirs();
 		}
 
-		try (PrintWriter writer = new PrintWriter(new FileWriter(new File(folder, "favorites.log")))) {
-			for (String line : contents) {
-				String content = JSON.parseObject(line).toString(SerializerFeature.PrettyFormat);
-				writer.println(content);
-			}
-		} catch (Exception e) {
+		try {
+			System.out.println(contents.size());
+			Files.writeString(new File(folder, "favorites.log").toPath(),
+					contents.toString(SerializerFeature.PrettyFormat));
+		} catch (Throwable e) {
+			e.printStackTrace();
+		}
+		try {
+			JSONObject picVideoJson = WeiboArrayToPicsVideos.weiboArrayToPicsVideos(contents, true);
+			Files.writeString(new File(folder, "favorites_pics_videos.log").toPath(),
+					picVideoJson.toString(SerializerFeature.PrettyFormat));
+		} catch (Throwable e) {
 			e.printStackTrace();
 		}
 	}
-
-	static List<Header> readHeader() throws IOException {
-		List<Header> headers = new ArrayList<>();
-		InputStream stream = 微博收藏json解析输出到favoritelog.class.getResourceAsStream("weibo_json_url_headers.txt");
-		BufferedReader reader = new BufferedReader(new InputStreamReader(stream));
-		String line = reader.readLine();
-
-		String name = null;
-		String value = null;
-		while ((line = reader.readLine()) != null) {
-
-			int index = line.indexOf(":");
-			name = line.substring(0, index);
-			value = line.substring(index + 2);
-
-			Header header = new BasicHeader(name, value);
-			headers.add(header);
-//			System.out.println(line);
-		}
-		reader.close();
-		return headers;
-	}
-
 }

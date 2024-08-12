@@ -7,7 +7,6 @@ import java.util.List;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
-import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.my.crawler.weibo2.GetFollowers.UserEntity;
 
@@ -48,11 +47,11 @@ public class 获取关注列表To根据UID解析微博并保存为本地log {
 		}
 	}
 
-	private static void saveFollows(List<UserEntity> userEntities, File followFile) throws IOException {
+	public static void saveFollows(List<UserEntity> userEntities, File followFile) throws IOException {
 		Files.writeString(followFile.toPath(), JSON.toJSONString(userEntities, SerializerFeature.PrettyFormat));
 	}
 
-	private static List<UserEntity> readFollows(File followFile) throws IOException {
+	public static List<UserEntity> readFollows(File followFile) throws IOException {
 		String content = Files.readString(followFile.toPath());
 		JSONArray jsonArray = JSON.parseArray(content);
 		List<UserEntity> userEntities = jsonArray.toJavaList(UserEntity.class);

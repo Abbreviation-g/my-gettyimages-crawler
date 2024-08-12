@@ -9,6 +9,7 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
+import java.util.Optional;
 import java.util.TreeMap;
 
 import com.alibaba.fastjson.JSON;
@@ -29,8 +30,8 @@ public class WeiboArrayToPicsVideos {
 
 		Iterator<String> oldIterator = oldObject.keySet().iterator();
 		while (oldIterator.hasNext()) {
-			String newId = (String) oldIterator.next();
-			allWeiboPicsVideos.put(newId, oldObject.get(newId));
+			String oldId = (String) oldIterator.next();
+			allWeiboPicsVideos.put(oldId, oldObject.get(oldId));
 		}
 
 		Iterator<String> newIterator = newObject.keySet().iterator();
@@ -55,8 +56,9 @@ public class WeiboArrayToPicsVideos {
 		JSONObject allWeiboPicsVideos = new JSONObject(new TreeMap<>());
 		for (int i = 0; i < array.size(); i++) {
 			JSONObject object = array.getJSONObject(i);
+			String idStr = object.getString("id");
 
-			final String dateId = getYearMonthDayId(object);
+			final String dateId = getYearMonthDayId(object, idStr);
 
 			final List<String> videos = new ArrayList<>();
 			final List<String> pics = new ArrayList<>();
@@ -77,14 +79,64 @@ public class WeiboArrayToPicsVideos {
 				singleObject.put(Constants.PICS_ID, pics);
 			}
 			singleObject.put(Constants.TEXT_ID, text);
+
 			allWeiboPicsVideos.put(dateId, singleObject);
 		}
 		return allWeiboPicsVideos;
 	}
 
-	private static String getYearMonthDayId(JSONObject object) {
+	public static JSONObject weiboArrayToPicsVideos(JSONArray array, boolean needUserName) {
+		JSONObject allWeiboPicsVideos = new JSONObject(new TreeMap<>());
+		for (int i = 0; i < array.size(); i++) {
+			JSONObject object = array.getJSONObject(i);
+			String idStr = object.getString("id");
+
+			final String dateId = getYearMonthDayId(object, idStr);
+
+			final List<String> videos = new ArrayList<>();
+			final List<String> pics = new ArrayList<>();
+			getVideos(object, videos);
+			getPics(object, pics);
+			getVideosPics(object, videos, pics);
+
+			if (videos.isEmpty() && pics.isEmpty()) {
+				continue;
+			}
+			String text = object.getString(Constants.TEXT_ID);
+
+			JSONObject singleObject = new JSONObject();
+			if (!videos.isEmpty()) {
+				singleObject.put(Constants.VIDEOS_ID, videos);
+			}
+			if (!pics.isEmpty()) {
+				singleObject.put(Constants.PICS_ID, pics);
+			}
+			singleObject.put(Constants.TEXT_ID, text);
+
+			JSONObject userJsonObject = object.getJSONObject("user");
+			if (userJsonObject != null) {
+				String userId = userJsonObject.getString("idstr");
+				String pageUrl = String.format(Constants.PAGE_URL_FORMAT, userId, idStr);
+				singleObject.put(Constants.PAGE_URL_ID, pageUrl);
+				if (needUserName) {
+					String screen_name = userJsonObject.getString(Constants.SCREEN_NAME_ID);
+					singleObject.put(Constants.SCREEN_NAME_ID, screen_name);
+				}
+			}
+			JSONArray tagsArray = object.getJSONArray(Constants.TAGS_ID);
+			if (tagsArray != null) {
+				Optional<String> optional = tagsArray.stream().map(JSONObject.class::cast)
+						.map(obj -> obj.getString("tag")).reduce((a, b) -> a + " " + b);
+				optional.ifPresent(tagsStr -> singleObject.put(Constants.TAGS_ID, tagsStr));
+			}
+
+			allWeiboPicsVideos.put(dateId, singleObject);
+		}
+		return allWeiboPicsVideos;
+	}
+
+	private static String getYearMonthDayId(JSONObject object, String idStr) {
 		String created_at = object.getString("created_at");
-		String id = object.getString("id");
 
 		@SuppressWarnings("deprecation")
 		Date date = new Date(created_at);
@@ -95,7 +147,7 @@ public class WeiboArrayToPicsVideos {
 		int month = calendar.get(Calendar.MONTH) + 1;
 		int day = calendar.get(Calendar.DAY_OF_MONTH);
 
-		String dateId = String.format(Constants.DATE_ID_FORMAT, year, month, day, id);
+		String dateId = String.format(Constants.DATE_ID_FORMAT, year, month, day, idStr);
 		return dateId;
 	}
 

@@ -1,40 +1,144 @@
 package com.my.crawler.weibo2;
 
+import static com.my.crawler.weibo2.WeiboImageDownloaderExt.start;
+
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.util.List;
-
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONArray;
-import com.my.crawler.weibo2.GetHalfYearFollowers.UserEntity;
 
 public class 下载半年可见 {
 	public static void main(String[] args) throws IOException {
-		File folder = new File("F:\\weibo_log");
-		File outputFolder = new File("F:\\weibo");
-
-		File followFile = new File(folder, "半年可见.log");
-		List<UserEntity> userEntities = null;
-		userEntities = readFollows(followFile);
-
-		for (UserEntity userEntity : userEntities) {
-			File userFolder = new File(folder, userEntity.screen_name);
-			File userOutputFolder = new File(outputFolder, userEntity.screen_name);
-//			if (userOutputFolder.exists()) {
-//				continue;
-//			}
-			if (!userOutputFolder.exists()) {
-				userOutputFolder.mkdirs();
-			}
-			根据picvideolog开始下载.start(userFolder, userOutputFolder);
-		}
+		start(new File("F:/weibo_log"), "程潇", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "陈乔恩", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "佟丽娅", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "_火野兔_", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "小蓝蓝plus", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "韩雪", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "林允Jelly", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "张雯", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "唐艺昕工作室", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "唐艺昕", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "聂小雨YU", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "镕馨二", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "angelababy", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "张予曦", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "刘湘_11", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "王鸥Angel", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "佳怡一路佳境", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "山一几Eleanor", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "林允的小号r", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "叶舒华_G-I-DLE", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "介个菜很辣的喔", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "一栗莎子", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "不2不叫周淑怡", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "婴宁lasw", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "BDD东", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "琬琬_", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "金佳悦-", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "李則慧", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "徐梓钧", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "陆妍淇", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "刘敏", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "汪聪", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "乃万N1NEONE", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "王悦伊", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "吴哲晗_RenRen", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "赵圆瑗", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "吴佩柔vianna", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "冯琳Fairy", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "林夏薇", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "演员郑清文", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "裴佳欣", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "舒畅", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "热依扎", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "柴蔚", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "何穗", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "蓝心ZoeZhang", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "刘玮婷V", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "何慧香", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "BEJ48-孙晓艳", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "左小青", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "赵子琪", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "严尚嘉", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "朱梓橦工作室", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "朱梓橦", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "張榕容", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "主持人郭玮", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "吴谨言", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "张芷溪", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "菅纫姿", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "颖儿Yinger", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "Gen1es_欧阳娣娣", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "郭雪芙HF_K", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "郭采洁", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "演员洪爽", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "李念", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "-靳梦佳", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "王晓晨", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "李斯羽", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "叶璇", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "Nana谈莉娜", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "牛欣欣", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "胡可", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "白冰", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "颜丹晨", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "孙晓伦呀", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "徐冬冬", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "李沁", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "李沁工作室", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "王鸥工作室", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "万茜", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "王丽坤", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "张雨绮", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "李冰冰", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "刘涛tamia", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "秦岚", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "秦岚工作室", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "马苏", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "刘芸", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "宋佳", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "李溪芮", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "王子文工作室微博", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "童瑶", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "苏青", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "毛晓彤", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "杨蓉", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "范冰冰", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "杨超越", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "-王楚然-", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "虞书欣Esther", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "周雨彤微博", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "李菲儿love", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "张柏芝工作室", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "张柏芝", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "赵丽颖", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "孙怡微博", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "张嘉倪", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "张萌", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "陳妍希michelle", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "张佳宁", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "蒋欣", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "王媛可", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "王卓淇erin__kay", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "李小冉", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "李佳桐sep", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "李依晓", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "吴宣仪_Betty", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "陈小纭", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "施诗Kira", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "章若楠", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "顾璇", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "孟子义", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "黄奕", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "演员艾米", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "米露", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "林小宅", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "JaniceMan文咏珊", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "张雪迎Sophie", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "刘诗诗", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "唐嫣", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "徐璐LULU", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "陈梦儿-myYY", new File("F:/weibo"));
+		start(new File("F:/weibo_log"), "镕馨Rongxiiin", new File("F:/weibo"));
 	}
 
-	private static List<UserEntity> readFollows(File followFile) throws IOException {
-		String content = Files.readString(followFile.toPath());
-		JSONArray jsonArray = JSON.parseArray(content);
-		List<UserEntity> userEntities = jsonArray.toJavaList(UserEntity.class);
-		return userEntities;
-	}
 }
