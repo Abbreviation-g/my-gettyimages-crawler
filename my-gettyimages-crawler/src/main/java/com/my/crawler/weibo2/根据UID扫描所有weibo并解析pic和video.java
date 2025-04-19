@@ -7,6 +7,7 @@ import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Objects;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
@@ -20,8 +21,8 @@ public class 根据UID扫描所有weibo并解析pic和video {
 	public static void main(String[] args) throws IOException {
 //		扫描半年可见();
 //		扫描特别关注();
-		扫描生图();
 		扫描网红();
+//		扫描生图();
 
 //		扫描欧阳娜娜();
 //		扫描宋妍霏();
@@ -31,30 +32,98 @@ public class 根据UID扫描所有weibo并解析pic和video {
 //		扫描王鸥();
 //		扫描娜扎();
 //		扫描林允();
-//		扫描吴优();
 //		扫描韩雪();
 //		扫描关晓彤();
 //		扫描吴宣仪();
-//		扫描程潇();
-//		扫描王玉雯();
 //		扫描热巴();
-//		扫描王楚然();
+//		扫描宋祖儿();
+//		扫描程潇();
+//
+//		扫描王玉雯();
 //		扫描王秀竹();
+//		扫描吴优();
+//		扫描王楚然();
 //		扫描赵今麦();
 //		扫描蒋依依();
 //		扫描张婧仪();
 //		扫描张予曦();
 //		扫描陈都灵();
+//		扫描胡连馨();
+//		扫描许佳琪();
+//		扫描杨幂();
+//		扫描孟佳();
+//		扫描秦岚();
+//		扫描范冰冰();
+//		扫描蔡文静();
+//		扫描白鹿();
+//		扫描倪妮();
+//		扫描黛薇卡();
+//		扫描李一桐();
+//		扫描周洁琼();
+//		扫描王鹤润();
+//		扫描孟子义();
+//		扫描李沁();
+//		扫描江疏影();
 
 //		扫描欧美();
 //		扫描韩国();
 //		扫描日本写真();
-//		扫描日本();
-
-//		扫描宋祖儿();
+//		扫描日本演员();
+//		扫描明星图片();
+//		扫描明星1();
+//		扫描明星2();
+//		扫描明星3();
+		
 //		扫描张嘉倪();
 
-		开始扫描();
+//		开始扫描();
+	}
+
+	private static void 扫描江疏影() throws IOException {
+		扫描(Constants.江疏影());
+	}
+	private static void 扫描李沁() throws IOException {
+		扫描(Constants.李沁());
+	}
+	private static void 扫描孟子义() throws IOException {
+		扫描(Constants.孟子义());
+	}
+	private static void 扫描王鹤润() throws IOException {
+		扫描(Constants.王鹤润());
+	}
+	private static void 扫描周洁琼() throws IOException {
+		扫描(Constants.周洁琼());
+	}
+	private static void 扫描李一桐() throws IOException {
+		扫描(Constants.李一桐());
+	}
+	private static void 扫描黛薇卡() throws IOException {
+		扫描(Constants.黛薇卡());
+	}
+	private static void 扫描倪妮() throws IOException {
+		扫描(Constants.倪妮());
+	}
+	private static void 扫描白鹿() throws IOException {
+		扫描(Constants.白鹿());
+	}
+	private static void 扫描蔡文静() throws IOException {
+		扫描(Constants.蔡文静());
+	}
+	private static void 扫描范冰冰() throws IOException {
+		扫描(Constants.范冰冰());
+	}
+	private static void 扫描秦岚() throws IOException {
+		扫描(Constants.秦岚());
+	}
+	private static void 扫描孟佳() throws IOException {
+		扫描(Constants.孟佳());
+	}
+	private static void 扫描杨幂() throws IOException {
+		扫描(Constants.杨幂());
+	}
+
+	private static void 扫描许佳琪() throws IOException {
+		扫描(Constants.许佳琪());
 	}
 
 	private static void 扫描陈都灵() throws IOException {
@@ -75,6 +144,10 @@ public class 根据UID扫描所有weibo并解析pic和video {
 
 	private static void 扫描王秀竹() throws IOException {
 		扫描(Constants.王秀竹());
+	}
+
+	private static void 扫描胡连馨() throws IOException {
+		扫描(Constants.胡连馨());
 	}
 
 	private static void 扫描王楚然() throws IOException {
@@ -119,8 +192,10 @@ public class 根据UID扫描所有weibo并解析pic和video {
 
 	private static void 扫描(Collection<IDNameEntity> entities) throws IOException {
 		for (IDNameEntity idNameEntity : entities) {
+			System.out.println("id: " + idNameEntity.id + "\t name: " + idNameEntity.screen_name);
 			start(idNameEntity.getId(), new File(folderBasePath, idNameEntity.screen_name));
 			Constants.randomSleepLong();
+			根据picvideolog开始下载.下载Mov2(idNameEntity);
 		}
 	}
 
@@ -152,12 +227,17 @@ public class 根据UID扫描所有weibo并解析pic和video {
 		扫描(Constants.日本写真());
 	}
 
-	private static void 扫描日本() throws IOException {
-		扫描(Constants.日本());
+	private static void 扫描日本演员() throws IOException {
+		扫描(Constants.日本演员());
 	}
 
 	private static void 扫描生图() throws IOException {
-		扫描(Constants.生图());
+//		扫描(Constants.生图());
+		for (IDNameEntity idNameEntity : Constants.生图()) {
+			System.out.println("id: " + idNameEntity.id + "\t name: " + idNameEntity.screen_name);
+			start(idNameEntity.getId(), new File(folderBasePath, idNameEntity.screen_name));
+			Constants.randomSleepLong();
+		}
 	}
 
 	private static void 扫描吴优() throws IOException {
@@ -192,68 +272,127 @@ public class 根据UID扫描所有weibo并解析pic和video {
 		扫描(Constants.张予曦());
 	}
 
+	private static void 扫描明星图片() throws IOException {
+		扫描(Constants.明星图片());
+	}
+	private static void 扫描明星3() throws IOException {
+		扫描(Constants.明星3());
+	}
+	private static void 扫描明星2() throws IOException {
+		扫描(Constants.明星2());
+	}
+	private static void 扫描明星1() throws IOException {
+		扫描(Constants.明星1());
+	}
+
 	private static void 开始扫描() throws IOException {
-//		start("1549364094", new File(folderBasePath, "江疏影"));
-//		start("1246229612", new File(folderBasePath, "毛晓彤"));
+//		start("7772266364", new File(folderBasePath, "Rachelcook1995"));
+		start("5638789392", new File(folderBasePath, "rachelcook14"));
+//		start("6459256544", new File(folderBasePath, "上戏啦"));
+//		start("3807003830", new File(folderBasePath, "张若晞Roxie"));
+//		start("7284275957", new File(folderBasePath, "坠落星空·江疏影"));
+//		start("6891885433",1, 300, new File(folderBasePath, "戏客Seeker"));
+//		start("1807391080", new File(folderBasePath, "Constence刘彦池"));
+//		根据picvideolog开始下载.下载Mov2(new IDNameEntity("1807391080", "Constence刘彦池"));
+//		start("2595359142", new File(folderBasePath, "Yakisa彭雅琦"));
+//		根据picvideolog开始下载.下载Mov2(new IDNameEntity("2595359142", "Yakisa彭雅琦"));
+//		start("6521611081", new File(folderBasePath, "食梦鲨"));
+//		根据picvideolog开始下载.下载Mov2(new IDNameEntity("6521611081", "食梦鲨"));
+//		start("1378010100", new File(folderBasePath, "王子文Ava"));
+//		根据picvideolog开始下载.下载Mov2(new IDNameEntity("1378010100", "王子文Ava"));
+//		start("1722686885", new File(folderBasePath, "王卓淇erin__kay"));
+//		根据picvideolog开始下载.下载Mov2(new IDNameEntity("1722686885", "王卓淇erin__kay"));
+//		start("1231654104", new File(folderBasePath, "刘芸"));
+//		根据picvideolog开始下载.下载Mov2(new IDNameEntity("1231654104", "刘芸"));
+//		start("1240008360", new File(folderBasePath, "王媛可"));
+//		根据picvideolog开始下载.下载Mov2(new IDNameEntity("1240008360", "王媛可"));
+//		start("1258859614", new File(folderBasePath, "我是江一燕"));
+//		根据picvideolog开始下载.下载Mov2(new IDNameEntity("1258859614", "我是江一燕"));
+//		start("6519552504", new File(folderBasePath, "陈梦儿-myYY"));
+//		根据picvideolog开始下载.下载Mov2(new IDNameEntity("6519552504", "陈梦儿-myYY"));
+//		start("1853627313", new File(folderBasePath, "卓仕琳"));
+//		根据picvideolog开始下载.下载Mov2(new IDNameEntity("1853627313", "卓仕琳"));
+//		start("6130786243", new File(folderBasePath, "流星牛角"));
+//		根据picvideolog开始下载.下载Mov2(new IDNameEntity("6130786243", "流星牛角"));
+//		start("5044684628", new File(folderBasePath, "嘉行传媒"));
+//		start("1715351501", new File(folderBasePath, "辛芷蕾"));
+//		start("5945340823", new File(folderBasePath, "辛芷蕾工作室"));
+//		start("1264948457", new File(folderBasePath, "董璇粉丝团"));
+//		start("2883701284", new File(folderBasePath, "O0笨笨呀0O-梁洁"));
+//		start("2283247914", new File(folderBasePath, "JunoTieN"));
+////		start("5489873079", new File(folderBasePath, "先锋大队长的后腿"));
+//		start("5503504780", new File(folderBasePath, "吉娜爱丽丝Gina"));
+//		start("7362539881", new File(folderBasePath, "黄梦莹工作室"));
+//		start("1676082433", new File(folderBasePath, "高圆圆"));
+//		start("5234965173", new File(folderBasePath, "甘婷婷工作室"));
+//		start("7040041221", new File(folderBasePath, "潇骑校尉曹操"));
+//		start("6349746169", new File(folderBasePath, "冯文娟工作室"));
+//		start("1504964033", new File(folderBasePath, "冯文娟"));
+//		start("5658396874", new File(folderBasePath, "安雅泰勒乔伊"));
+//		start("5511171110", new File(folderBasePath, "安雅泰勒-乔伊"));
+//		start("3561627892", new File(folderBasePath, "EstherHeesch吧"));
+//		start("7607376925", new File(folderBasePath, "是你的程儿"));
+//		start("2382243211", new File(folderBasePath, "hThT__"));
+//		start("1734442735", new File(folderBasePath, "汪小敏"));
+//		start("7309784142", new File(folderBasePath, "Penicillin·倪妮"));
+//		start("7489613730", new File(folderBasePath, "北纬26度想Ni·倪妮"));
+//		start("7457436869", new File(folderBasePath, "KleinBlue·倪妮"));
+//		start("2595359142", new File(folderBasePath, "Yakisa彭雅琦"));
+//		start("1233965570", new File(folderBasePath, "川外川"));
+//		start("7772266364", new File(folderBasePath, "Rachelcook1995"));
+//		start("6518263844", new File(folderBasePath, "镜头兄"));
+//		start("6467863545", new File(folderBasePath, "tbbhktjj"));
+//		start("6472458430", new File(folderBasePath, "SkyPictorial"));
+//		start("1197002213", new File(folderBasePath, "男人装"));
+//		start("2966904732", new File(folderBasePath, "美好身体bo"));
+//		start("6973729551", new File(folderBasePath, "HeartSniper_许佳琪"));
+//		start("1874288121", new File(folderBasePath, "王瑞子715"));
+//		start("5279748872", new File(folderBasePath, "yesyanbaby"));
+//		start("3987343279", new File(folderBasePath, "河北彩伽-元河北彩花"));
+//		start("5732211644", new File(folderBasePath, "河北彩伽"));
+//		start("7409628440", new File(folderBasePath, "AprilFox_Naran娜然"));
+//		start("7415540957", new File(folderBasePath, "月与玫瑰__娜然Naran"));
+//		start("7014245539", new File(folderBasePath, "娜然丨NaranDaily"));
+//		start("7863307524", new File(folderBasePath, "娜然Naran工作室"));
+//		start("6463277233", new File(folderBasePath, "娜然Naran"));
+//		start("2646681810", new File(folderBasePath, "林允Jelly"));
+//		start("1237313773", new File(folderBasePath, "热依扎"));
+//		start("1957663211", new File(folderBasePath, "张芷溪"));
+//		start("6368929929", new File(folderBasePath, "王子文工作室微博"));
+//		start("1222062284", new File(folderBasePath, "张萌"));
+//		start("1313228221", new File(folderBasePath, "李佳桐sep"));
 //		start("1307243944", new File(folderBasePath, "李依晓"));
-//		start("2569522534", new File(folderBasePath, "孟子义"));
-//		start("5044684628", 1000, new File(folderBasePath, "嘉行传媒"));
+//		start("1741661732", new File(folderBasePath, "顾璇"));
+//		start("6521611081", new File(folderBasePath, "食梦鲨"));
+//		start("1951027255", new File(folderBasePath, "李如儒"));
+//		start("1819744725", new File(folderBasePath, "王乐君"));
+//		start("5197213436", new File(folderBasePath, "金佳悦-"));
+//		start("3262625014", new File(folderBasePath, "唐艺昕工作室"));
+//		start("1862896261", new File(folderBasePath, "松岡李那LinahM"));
+//		start("3285031871", new File(folderBasePath, "刘美彤"));
+//		start("1345943410", new File(folderBasePath, "刘美含"));
+//		start("2742586765", new File(folderBasePath, "孙嘉璐Ruby"));
+//		start("5994952329", new File(folderBasePath, "包上恩"));
+//		start("2169289455", new File(folderBasePath, "孙雪宁ooo"));
+//		start("1280435871", new File(folderBasePath, "YUNAN男男"));
+//		start("6079596473", new File(folderBasePath, "老余那些事"));
+//		start("1890196401", new File(folderBasePath, "不2不叫周淑怡"));
+//		start("7499320208", new File(folderBasePath, "刘芊螢_LQY"));
+//		start("1624095323", new File(folderBasePath, "曲尼次仁"));
+//		start("1898812132", new File(folderBasePath, "吳千語全球官方後援會"));
+//		start("5849619820", new File(folderBasePath, "蔡卓宜工作室"));
 //		start("7120634645", new File(folderBasePath, "李若嘉工作室"));
 //		start("6576856192", new File(folderBasePath, "火箭少女101官博"));
 //		start("1243273752", new File(folderBasePath, "古晨"));
-//		start("3639470012", new File(folderBasePath, "青蛙公主爱凌"));
 //		start("1714246692", new File(folderBasePath, "傅嘉莉KellyFu"));
-//		start("2012998250", new File(folderBasePath, "张馨予工作室"));
-//		start("1304048383", new File(folderBasePath, "李若嘉"));
-//		start("6489906026", new File(folderBasePath, "星图驿站"));
-//		start("7237314735", new File(folderBasePath, "星素鉴赏"));
-//		start("2174204211", new File(folderBasePath, "唐嫣工作室"));
-//		start("2687827715", new File(folderBasePath, "歐陽娜娜Nana"));
-//		start("5943076204", new File(folderBasePath, "歐陽娜娜Nana工作室"));
 //		start("1297916241", new File(folderBasePath, "洋气YOUNGCHIC"));
-//		start("6387099968", new File(folderBasePath, "张婧仪"));
-//		start("7610808848", new File(folderBasePath, "张婧仪工作室"));
-//		start("5038633340", new File(folderBasePath, "沈羽洁er"));
-//		start("5666687855", new File(folderBasePath, "BellaHadidCN"));
-//		start("3733026753", new File(folderBasePath, "于雯_"));
-//		start("2153913104", new File(folderBasePath, "Karena吳千語"));
-//		start("5617960493", new File(folderBasePath, "徐璐工作室"));
-//		start("5954919139", new File(folderBasePath, "蒋梦婕工作室"));
-//		start("1749964961", new File(folderBasePath, "张馨予"));
-//		start("1549364094", new File(folderBasePath, "江疏影"));
-//		start("1848949921", new File(folderBasePath, "姜珮瑶"));
-//		start("1659390800", new File(folderBasePath, "蒋梦婕"));
-//		start("1378010100", new File(folderBasePath, "王子文Ava"));
-//		start("6525010965", new File(folderBasePath, "狐厂大拷问"));
 //		start("7782739992", new File(folderBasePath, "无尽热恋丨1226x1109"));
-		start("3603256695", new File(folderBasePath, "梦醒忒远"));
-//		start("2687827715", new File(folderBasePath, "歐陽娜娜Nana"));
-//		start("1590144567", new File(folderBasePath, "潘霜霜Shayla"));
+//		start("3603256695", new File(folderBasePath, "梦醒忒远"));
 //		start("6650714202", new File(folderBasePath, "李凯馨Eleanor工作室"));
-//		start("1756505647", new File(folderBasePath, "Ming奚梦瑶"));
-//		start("2106192855", new File(folderBasePath, "赵今麦angel"));
-//		start("6521611081", new File(folderBasePath, "食梦鲨"));
-//		start("1246850033", new File(folderBasePath, "徐冬冬"));
-//		start("2717603311", new File(folderBasePath, "李則慧"));
-//		start("5878805423", new File(folderBasePath, "BDD东"));
-//		start("1917053352", new File(folderBasePath, "王紫璇CiCi"));
-//		start("6363000838", new File(folderBasePath, "林允的小号r"));
-//		start("1873771623", new File(folderBasePath, "康可人"));
-//		start("1712539910", new File(folderBasePath, "陈乔恩"));
 //		start("7749127987", new File(folderBasePath, "·AllForZendaya·"));
 //		start("3635953843", new File(folderBasePath, "MadisonBeerUpdates"));
 //		start("5335569701", new File(folderBasePath, "凯瑟琳纽顿0208"));
-//		start("2950251663", new File(folderBasePath, "吉尼Gini"));
-//		start("1586249967", new File(folderBasePath, "汤梦佳"));
-//		start("7720744067", new File(folderBasePath, "明星生图现场"));
-//		start("2389396110", new File(folderBasePath, "Fyuan方圆"));
-//		start("1747837917", new File(folderBasePath, "林逸欣Shara"));
 //		start("3194073462", new File(folderBasePath, "MetFreckle"));
-//		start("1915458005", new File(folderBasePath, "刘湘_11"));
-//		start("1913244047", new File(folderBasePath, "钟楚曦工作室"));
-//		start("1943405723", new File(folderBasePath, "钟楚曦"));
-//		start("1229385395", new File(folderBasePath, "董璇"));
-//		start("5397349535", new File(folderBasePath, "一个阿茶-"));
 //		start("7832948489", new File(folderBasePath, "周也资讯站"));
 //		start("5666687855", new File(folderBasePath, "BellaHadidCN"));
 //		start("7329838548", new File(folderBasePath, "SydneySweeneyCN"));
@@ -261,6 +400,52 @@ public class 根据UID扫描所有weibo并解析pic和video {
 
 	public static void start(String uid, File folder) throws IOException {
 		start(uid, 0, folder);
+	}
+	
+	private static void start(String uid, int beginPage,int endPage, File folder) throws IOException {
+//		File weiboArrayFile = new File(folder, Constants.WEIBO_ARRAY_FILE_NAME);
+		File picVideoLogFile = new File(folder, Constants.PICS_VIDEOS_FILE_NAME);
+		Date lastestDate = null;
+		JSONObject oldObject = null;
+//		JSONArray oldArray = null;
+		if (picVideoLogFile.exists()) {
+//			String content = Files.readString(picVideoLogFile.toPath());
+//			oldObject = JSON.parseObject(content);
+
+			String content = Files.readString(picVideoLogFile.toPath());
+			oldObject = JSON.parseObject(content);
+			if (beginPage == 0) {
+				lastestDate = getLastestDate(oldObject);
+			}
+		}
+
+		JSONArray newWeiboArray = WeiboUIDToWeiboArray.getWeiboArray(uid, beginPage,endPage, lastestDate);
+		JSONObject picVideoObjects = WeiboArrayToPicsVideos.weiboArrayToPicsVideos(newWeiboArray);
+		if (picVideoObjects.isEmpty()) {
+			System.err.println("解析 \t" + uid + "\t失败");
+			return;
+		}
+		if (oldObject != null) {
+			picVideoObjects = WeiboArrayToPicsVideos.mergeOldAndNew(oldObject, picVideoObjects);
+//			for (int i = 0; i < oldArray.size(); i++) {
+//				newWeiboArray.add(oldArray.get(i));
+//			}
+		}
+
+		if (!folder.exists()) {
+			folder.mkdirs();
+		}
+		System.gc();
+//		try {
+//			Files.writeString(weiboArrayFile.toPath(), newWeiboArray.toString(SerializerFeature.PrettyFormat));
+//		} catch (Throwable e) {
+//			e.printStackTrace();
+//		}
+		try {
+			Files.writeString(picVideoLogFile.toPath(), picVideoObjects.toString(SerializerFeature.PrettyFormat));
+		} catch (Throwable e) {
+			e.printStackTrace();
+		}
 	}
 
 	private static void start(String uid, int beginPage, File folder) throws IOException {
@@ -275,7 +460,9 @@ public class 根据UID扫描所有weibo并解析pic和video {
 
 			String content = Files.readString(picVideoLogFile.toPath());
 			oldObject = JSON.parseObject(content);
-			lastestDate = getLastestDate(oldObject);
+			if (beginPage == 0) {
+				lastestDate = getLastestDate(oldObject);
+			}
 		}
 
 		JSONArray newWeiboArray = WeiboUIDToWeiboArray.getWeiboArray(uid, beginPage, lastestDate);

@@ -1,16 +1,16 @@
-GET /ajax/statuses/mymblog?uid=7725260725&page=1&feature=0 HTTP/2
+GET /ajax/friendships/friends?page=1&uid=3603256695 HTTP/2
 Host: weibo.com
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:128.0) Gecko/20100101 Firefox/128.0
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:137.0) Gecko/20100101 Firefox/137.0
 Accept: application/json, text/plain, */*
 Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
 Accept-Encoding: gzip, deflate, br, zstd
 X-Requested-With: XMLHttpRequest
-client-version: v2.45.86
-server-version: v2024.08.05.1
-X-XSRF-TOKEN: nLwQ3XL1KQEJaVhnsy0b9U23
+client-version: v2.47.53
+server-version: v2025.04.15.1
+X-XSRF-TOKEN: v3XIvrvpfylWNWn74ymtpqFf
 Connection: keep-alive
-Referer: https://weibo.com/u/7725260725
-Cookie: SINAGLOBAL=5564459443412.725.1691551520655; ULV=1722419882369:37:7:1:4532279853367.2295.1722419882207:1721439770023; SCF=AifPxbBkS5LEGO2DDos3PdBIiJETOMmkyQOot4mO5x2FxhAPE69w2uDOzGO94t9eWh4nNABbH8Xn7di1-6O0tQQ.; UOR=,,www.baidu.com; SUB=_2A25LtfT_DeRhGeVI61ET9SjKwjmIHXVoywg3rDV8PUJbkNAGLRnNkW1NTAOtpptm1Ec0DsNpWqoAiG-01xGwaxGX; SUBP=0033WrSXqPxfM725Ws9jqgMF55529P9D9WFOy.hqXqwQGpGTla2erusc5JpX5KMhUgL.FoeceheESKqc1K-2dJLoIEBLxKqLBKzLBKqLxK.L1hqL1KzLxK-LB.qL1KzLxKnLB.qL1-et; ALF=1725501871; XSRF-TOKEN=nLwQ3XL1KQEJaVhnsy0b9U23; WBPSESS=XMMIwdETR_JT96BLYlgiKdRbtXi8_udAJVxUz_5SaKY9HhqTHcFvn3klk_-W9c2FStb4y1x3iD8U7rCnVOZPuSHWTJJ41t-pGWybjotrOkDUXSxBVfJ7v4qr49-BSJ7Ok5V6bGlUoBXhi5xaOkHw2g==
+Referer: https://weibo.com/u/page/follow/3603256695
+Cookie: SINAGLOBAL=5564459443412.725.1691551520655; ULV=1742702910226:61:4:1:3059992436340.0522.1742702910122:1742297448432; SCF=AifPxbBkS5LEGO2DDos3PdBIiJETOMmkyQOot4mO5x2FxhAPE69w2uDOzGO94t9eWh4nNABbH8Xn7di1-6O0tQQ.; ALF=1747310818; SUB=_2A25K-juyDeRhGeVI61ET9SjKwjmIHXVmdjF6rDV8PUJbkNB-LVLGkW1NTAOtphFikiD160TZEfK_hBGz3q3fZri6; SUBP=0033WrSXqPxfM725Ws9jqgMF55529P9D9WFOy.hqXqwQGpGTla2erusc5JpX5KMhUgL.FoeceheESKqc1K-2dJLoI0YLxKqL1hnL1K2LxKML1-2L1hBLxKqLBKzLBKqLxKqL1heLBoeLxK-LBKBLB-2LxKnLB.qL1-eLxKBLB.2L1hqt; XSRF-TOKEN=v3XIvrvpfylWNWn74ymtpqFf; _s_tentry=weibo.com; Apache=3059992436340.0522.1742702910122; WBPSESS=XMMIwdETR_JT96BLYlgiKdRbtXi8_udAJVxUz_5SaKaRc8ybopEA05ip9OI3ziiuGFx3RdMizaDWfR1QDKpRgeNj4Ep5BV-3k4lcOPZm-nYc0boyf3G_u5-KUisKCKHHagUUo1XD3ooWP3DZLmckSw==
 Sec-Fetch-Dest: empty
 Sec-Fetch-Mode: cors
 Sec-Fetch-Site: same-origin

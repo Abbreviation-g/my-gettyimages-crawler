@@ -18,6 +18,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 import org.apache.http.HttpEntity;
@@ -217,8 +219,11 @@ public class 解析微博网页输出到json文件并下载图片 {
 		outputFolder = new File("D:\\weibo\\项偞婧Cici工作室");
 		outputFolder = new File("D:\\weibo\\依涵妹纸");
 //		outputFolder = new File("D:\\weibo\\康可人");
+		outputFolder = new File("G:\\林允");
 
-		downloadFromFolder(outputFolder);
+		
+//		downloadFromFolder(outputFolder);
+		downloadFromFolder(new File("G:\\林允"), new File("G:\\林允-output"));
 	}
 
 	static class MonthUrl {
@@ -269,13 +274,43 @@ public class 解析微博网页输出到json文件并下载图片 {
 		}
 	}
 
-	private static void downloadFromFolder(File outputFolder) throws IOException {
-		File jsonLogFile = new File(outputFolder, "json.log");
+
+	public static String[] convertDate(String date) { 
+		String regex = "(\\d+)年(\\d+)月(\\d+日)?"; 
+		Pattern pattern = Pattern.compile(regex); 
+		Matcher matcher = pattern.matcher(date); 
+		if (matcher.matches()) { 
+			String year = matcher.group(1);
+			year = String.format("%04d", Integer.parseInt(year));
+			String month = matcher.group(2);
+			month = String.format("%02d", Integer.parseInt(month)); // 补齐月份前的零 
+			return new String[] { year , year + "-" + month}; 
+		} else { 
+			return new String[] {date};
+		}
+	}
+    
+    private static File createOutputFolder(File outputFolder, String monthStr) {
+    	String[] convertDate = convertDate(monthStr);
+    	String year = convertDate[0];
+    	File monthFolder = new File(outputFolder, year);
+    	if (convertDate.length ==2) {
+    		String month = convertDate[1];
+    		monthFolder = new File(monthFolder, month);
+    	}
+    	if (!monthFolder.exists()) {
+			monthFolder.mkdirs();
+		}
+		return monthFolder;  
+    }
+	
+	private static void downloadFromFolder(File jsonLogFolder, File outputFolder) throws IOException {
+		File jsonLogFile = new File(jsonLogFolder, "json.log");
 		if (!jsonLogFile.exists()) {
 			return;
 		}
 		Map<String, MonthUrl> newMap = MonthUrl.toMap(jsonLogFile);
-		File jsonLogBakFile = new File(outputFolder, "json.log.bak");
+		File jsonLogBakFile = new File(jsonLogFolder, "json.log.bak");
 		if (jsonLogBakFile.exists()) {
 			Map<String, MonthUrl> bakMap = MonthUrl.toMap(jsonLogBakFile);
 			Collection<MonthUrl> mergeJsonLog = MonthUrl.mergeMap(bakMap, newMap);
@@ -284,7 +319,7 @@ public class 解析微博网页输出到json文件并下载图片 {
 			Files.writeString(jsonLogFile.toPath(), mergeJsonLogString);
 		}
 
-		File doneFile = new File(outputFolder, "done.list");
+		File doneFile = new File(jsonLogFolder, "done.list");
 		List<String> alreadyList;
 		if (doneFile.exists()) {
 			alreadyList = Files.readAllLines(doneFile.toPath());
@@ -304,10 +339,7 @@ public class 解析微博网页输出到json文件并下载图片 {
 			Iterator<String> iterator = arr.iterator();
 			int currentIndex = 0;
 			while (iterator.hasNext()) {
-				File monthFolder = new File(outputFolder, month);
-				if (!monthFolder.exists()) {
-					monthFolder.mkdir();
-				}
+				File monthFolder = createOutputFolder(outputFolder, month);
 				String imgUrlStr = (String) iterator.next();
 				if (alreadyList.contains(imgUrlStr)) {
 					System.out.println(
@@ -316,7 +348,7 @@ public class 解析微博网页输出到json文件并下载图片 {
 				}
 				alreadyList.add(imgUrlStr);
 				System.out.println(String.format("%d 正在下载(%d/%d) : %s", (++i), ++currentIndex, arr.size(), imgUrlStr));
-//				System.out.println("正在下载" + (i++) + "/" + arr.size() + ":" + imgUrlStr);
+				System.out.println("正在下载" + (i++) + "/" + arr.size() + ":" + imgUrlStr);
 				try {
 					downLoadFromUrl(imgUrlStr, monthFolder, alreadyFileNameList);
 				} catch (MalformedURLException e) {
@@ -327,6 +359,10 @@ public class 解析微博网页输出到json文件并下载图片 {
 			}
 		}
 		Files.write(doneFile.toPath(), alreadyList);
+	}
+
+	private static void downloadFromFolder(File outputFolder) throws IOException {
+		downloadFromFolder(outputFolder, outputFolder);
 	}
 
 	private static String getFileName(String urlStr) {

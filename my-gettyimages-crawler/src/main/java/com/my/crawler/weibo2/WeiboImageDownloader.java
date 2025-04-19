@@ -29,7 +29,7 @@ public class WeiboImageDownloader {
 		String fileName = urlStr.substring(index + 1, endIndex);
 		return fileName;
 	}
-	
+
 	public static String getImageName(String urlStr, String dateStr) {
 		return dateStr + "-" + getImageName(urlStr);
 	}
@@ -46,10 +46,8 @@ public class WeiboImageDownloader {
 //			conn.setRequestProperty("referer", "https://weibo.com/u/5295502496?tabtype=album&uid=5295502496&index=0");
 
 			conn.setRequestProperty("Host", "wx1.sinaimg.cn");
-			conn.setRequestProperty("User-Agent",
-					"Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/117.0");
-			conn.setRequestProperty("Accept",
-					"text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8");
+			conn.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/117.0");
+			conn.setRequestProperty("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8");
 			conn.setRequestProperty("Accept-Language", "zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2");
 			conn.setRequestProperty("Accept-Encoding", "gzip, deflate, br");
 			conn.setRequestProperty("Referer", "https://weibo.com/");
@@ -75,7 +73,7 @@ public class WeiboImageDownloader {
 				inputStream.close();
 			}
 		} catch (IOException ex) {
-			ex.printStackTrace();
+			System.err.println(url);
 			return false;
 		}
 		return true;

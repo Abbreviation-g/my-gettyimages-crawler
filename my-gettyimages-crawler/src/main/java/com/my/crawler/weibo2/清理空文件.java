@@ -1,12 +1,43 @@
 package com.my.crawler.weibo2;
 
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.FileVisitResult;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.SimpleFileVisitor;
+import java.nio.file.attribute.BasicFileAttributes;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class Test {
+public class 清理空文件 {
 	public static void main(String[] args) {
-		清空文件夹("F:\\weibo_log");
+//		清空文件夹("F:\\weibo_log");
+//		清理空文件("F:\\weibo4");
+//		清理空文件("F:\\thefappeningblog-output");
+//		清理空文件("F:\\weibo2");
+//		清理空文件("F:\\weibo\\胡连馨后援会官博");
+		清理空文件("F:\\xasiat-output");
+	}
+
+	private static void 清理空文件(String folderPath) {
+		try {
+			Files.walkFileTree(Paths.get(folderPath), new SimpleFileVisitor<Path>() {
+				@Override
+				public FileVisitResult visitFile(Path path, BasicFileAttributes attrs) throws IOException {
+					File file = path.toFile();
+					if (file.length() == 0L) {
+						System.out.println(file + "\t deleted");
+						file.delete();
+					}
+					return super.visitFile(path, attrs);
+				}
+			});
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	private static void 清空文件夹(String folderPath) {

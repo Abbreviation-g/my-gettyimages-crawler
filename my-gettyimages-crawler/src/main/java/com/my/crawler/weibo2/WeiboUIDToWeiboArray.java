@@ -133,8 +133,51 @@ public class WeiboUIDToWeiboArray {
 	public static JSONArray getWeiboArray(String uid, Date lastestDate) throws IOException {
 		return getWeiboArray(uid, 0, lastestDate);
 	}
+	
+	public static JSONArray getWeiboArray(String uid, Integer beginPage,int endPage, Date lastestDate) throws IOException {
+		System.setProperty("org.apache.commons.logging.Log", "org.apache.commons.logging.impl.NoOpLog");
 
-	public static JSONArray getWeiboArray(String uid, int beginPage, Date lastestDate) throws IOException {
+		final List<Header> headers = Headers.readHeader();
+		// TODO
+		final CloseableHttpClient httpClient = createHttpClients();
+
+		String sinceid = "0";
+		int page = beginPage;
+		JSONArray array = new JSONArray();
+		while (sinceid != null) {
+			Crawler crawler = new Crawler(uid, page, headers, httpClient);
+			crawler.start();
+			page++;
+
+			sinceid = crawler.getSinceId();
+			ContentEntity contentEntity = crawler.getContentEntity();
+			if (contentEntity == null || contentEntity.data == null || contentEntity.data.list == null) {
+				continue;
+			}
+			JSONArray list = contentEntity.data.list;
+			array.addAll(list);
+			if (lastestDate != null) {
+				boolean shouldBreak = shouldBreak(list, lastestDate);
+				if (shouldBreak) {
+					break;
+				}
+			}
+
+			if (sinceid == null || sinceid.isEmpty() || "0".equals(sinceid)) {
+				break;
+			}
+
+			if (page >= endPage) {
+				break;
+			}
+			Constants.randomSleepLong();
+		}
+		httpClient.close();
+
+		return array;
+	}
+
+	public static JSONArray getWeiboArray(String uid, Integer beginPage, Date lastestDate) throws IOException {
 		System.setProperty("org.apache.commons.logging.Log", "org.apache.commons.logging.impl.NoOpLog");
 
 		final List<Header> headers = Headers.readHeader();

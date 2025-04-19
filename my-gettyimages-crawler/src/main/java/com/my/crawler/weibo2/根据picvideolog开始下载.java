@@ -4,7 +4,9 @@ import static com.my.crawler.weibo2.WeiboImageDownloaderExt.start;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
@@ -17,212 +19,341 @@ import com.my.crawler.weibo2.Constants.IDNameEntity;
 
 public class 根据picvideolog开始下载 {
 	public static void main(String[] args) throws IOException {
-		下载半年可见();
-		下载特别关注();
+//		下载MOVs();
+
+//		下载半年可见();
+//		下载特别关注();
 //		下载部分生图();
-//		下载网红();
+		下载网红();
 
 //		下载欧阳娜娜();
+//		下载宋妍霏();
 //		下载王紫璇();
+//		下载赵露思();
+//		下载张天爱();
 //		下载王鸥();
 //		下载娜扎();
-//		下载韩雪();
 //		下载林允();
-//		下载宋妍霏();
-//		下载吴宣仪();
+//		下载韩雪();
 //		下载关晓彤();
-//		下载宋祖儿();
-//		下载张天爱();
-//		下载王玉雯();
-//		下载程潇();
-//		下载王秀竹();
-//		下载吴优();
-//		下载赵今麦();
-//		下载王楚然();
+//		下载吴宣仪();
 //		下载热巴();
-//		下载蒋依依();
-//		下载张婧仪();
-//		下载张予曦();
-//		下载陈都灵();
+//		下载宋祖儿();
+//		下载程潇();
+
+		下载王玉雯();
+		下载王秀竹();
+		下载吴优();
+		下载王楚然();
+		下载赵今麦();
+		下载蒋依依();
+		下载张婧仪();
+		下载张予曦();
+		下载陈都灵();
+		下载胡连馨();
+		下载许佳琪();
+		下载杨幂();
+		下载孟佳();
+		下载秦岚();
+		下载范冰冰();
+		下载蔡文静();
+		下载白鹿();
+		下载倪妮();
+		下载李一桐();
+		下载王鹤润();
+		下载周洁琼();
+		下载孟子义();
+		下载李沁();
+		下载江疏影();
+
+//		下载明星1();
+//		下载明星2();
+//		下载明星3();
+//
+//		下载部分日本写真();
+//		下载日本演员();
+//		下载();
 
 //		下载生图();
-//		下载部分日本写真();
 //		下载部分明星图片();
 //		下载梦醒忒远();
 
 //		下载张嘉倪();
-//		下载();
+//		下载欧美();
 	}
 
-	private static void 下载半年可见() throws IOException {
-		for (Constants.IDNameEntity entity : Constants.半年可见()) {
-			start(new File("F:/weibo_log", entity.screen_name), new File("F:/weibo2", entity.screen_name));
+	private static void 下载MOVs() throws IOException {
+		下载MOV(Constants.半年可见());
+		下载MOV(Constants.特别关注());
+		下载MOV(Constants.网红());
+
+		下载MOV(Constants.明星1());
+		下载MOV(Constants.明星2());
+		下载MOV(Constants.明星3());
+
+		下载MOV(Constants.倪妮());
+		下载MOV(Constants.白鹿());
+		下载MOV(Constants.蔡文静());
+		下载MOV(Constants.许佳琪());
+		下载MOV(Constants.蒋依依());
+		下载MOV(Constants.张婧仪());
+		下载MOV(Constants.张嘉倪());
+		下载MOV(Constants.王楚然());
+		下载MOV(Constants.王秀竹());
+		下载MOV(Constants.吴优());
+		下载MOV(Constants.热巴());
+		下载MOV(Constants.王玉雯());
+		下载MOV(Constants.王紫璇());
+		下载MOV(Constants.程潇());
+		下载MOV(Constants.赵露思());
+		下载MOV(Constants.王鸥());
+		下载MOV(Constants.欧阳娜娜());
+		下载MOV(Constants.林允());
+		下载MOV(Constants.张天爱());
+		下载MOV(Constants.关晓彤());
+		下载MOV(Constants.娜扎());
+		下载MOV(Constants.胡连馨());
+		下载MOV(Constants.韩雪());
+		下载MOV(Constants.赵今麦());
+		下载MOV(Constants.宋祖儿());
+		下载MOV(Constants.吴宣仪());
+		下载MOV(Constants.宋妍霏());
+		下载MOV(Constants.张予曦());
+		下载MOV(Constants.范冰冰());
+		下载MOV(Constants.秦岚());
+		下载MOV(Constants.孟佳());
+		下载MOV(Constants.杨幂());
+		下载MOV(Constants.陈都灵());
+	}
+
+	private static void 下载明星1() throws IOException {
+		for (Constants.IDNameEntity entity : Constants.明星1()) {
+			start(new File("F:/weibo_log", entity.screen_name), new File("H:/weibo1", entity.screen_name), 2025, 1, 1, 2099, 12, 31);
 		}
 	}
 
+	private static void 下载明星2() throws IOException {
+		for (Constants.IDNameEntity entity : Constants.明星2()) {
+			start(new File("F:/weibo_log", entity.screen_name), new File("H:/weibo2", entity.screen_name), 2025, 1, 1, 2099, 12, 31);
+		}
+	}
+
+	private static void 下载明星3() throws IOException {
+		for (Constants.IDNameEntity entity : Constants.明星3()) {
+			start(new File("F:/weibo_log", entity.screen_name), new File("H:/weibo3", entity.screen_name), 2025, 1, 1, 2099, 12, 31);
+		}
+	}
+
+	private static void 下载半年可见() throws IOException {
+		下载(Constants.半年可见(), "H:/weibo-" + "半年可见");
+	}
+
 	private static void 下载特别关注() throws IOException {
-//		下载(Constants.特别关注());
-		for (Constants.IDNameEntity entity : Constants.特别关注()) {
-			start(new File("F:/weibo_log", entity.screen_name), new File("F:/weibo4", entity.screen_name), 2000, 1, 1, 2017, 5, 30);
-			start(new File("F:/weibo_log", entity.screen_name), new File("F:/weibo4", entity.screen_name), 2022, 8, 15, 2099, 2, 3);
+		下载(Constants.特别关注(), "H:/weibo-" + "特别关注");
+	}
+
+	private static void 下载江疏影() throws IOException {
+		下载(Constants.江疏影(), "H:/weibo-" + "江疏影");
+	}
+	private static void 下载李沁() throws IOException {
+		下载(Constants.李沁(), "H:/weibo-" + "李沁");
+	}
+	private static void 下载周洁琼() throws IOException {
+		下载(Constants.周洁琼(), "H:/weibo-" + "周洁琼");
+	}
+	private static void 下载孟子义() throws IOException {
+		下载(Constants.孟子义(), "H:/weibo-" + "孟子义");
+	}
+	private static void 下载王鹤润() throws IOException {
+		下载(Constants.王鹤润(), "H:/weibo-" + "王鹤润");
+	}
+	private static void 下载黛薇卡() throws IOException {
+		下载(Constants.黛薇卡(), "H:/weibo-" + "黛薇卡");
+	}
+	private static void 下载李一桐() throws IOException {
+		下载(Constants.李一桐(), "H:/weibo-" + "李一桐");
+	}
+	private static void 下载倪妮() throws IOException {
+		下载(Constants.倪妮(), "H:/weibo-" + "倪妮");
+	}
+
+	private static void 下载白鹿() throws IOException {
+		下载(Constants.白鹿(), "H:/weibo-" + "白鹿");
+	}
+
+	private static void 下载蔡文静() throws IOException {
+		下载(Constants.蔡文静(), "H:/weibo-" + "蔡文静");
+	}
+
+	private static void 下载许佳琪() throws IOException {
+		下载(Constants.许佳琪(), "H:/weibo-" + "许佳琪");
+	}
+
+	private static void 下载日本演员() throws IOException {
+		下载(Constants.日本演员(), "H:/weibo-" + "日本演员");
+//		for (Constants.IDNameEntity entity : Constants.日本演员()) {
+//			start(new File("F:/weibo_log", entity.screen_name), new File("H:/weibo", entity.screen_name), 2000, 1, 1, 2011, 5, 4);
+//			start(new File("F:/weibo_log", entity.screen_name), new File("H:/weibo", entity.screen_name), 2023, 12, 1, 2099, 5, 4);
+//		}
+	}
+
+	private static void 下载欧美() throws IOException {
+//		下载(Constants.欧美());
+		for (Constants.IDNameEntity entity : Constants.欧美()) {
+			start(new File("F:/weibo_log", entity.screen_name), new File("H:/weibo", entity.screen_name), 2000, 1, 1, 2011, 5, 4);
+			start(new File("F:/weibo_log", entity.screen_name), new File("H:/weibo", entity.screen_name), 2024, 9, 1, 2099, 5, 4);
 		}
 	}
 
 	private static void 下载网红() throws IOException {
-//		下载(Constants.网红());
-		for (Constants.IDNameEntity entity : Constants.网红()) {
-//			start(new File("F:/weibo_log", entity.screen_name), new File("F:/weibo5", entity.screen_name), 2000, 1, 1, 2013, 12, 31);
-//			start(new File("F:/weibo_log", entity.screen_name), new File("F:/weibo5", entity.screen_name), 2024, 7, 1, 2099, 12, 31);
-			start(new File("F:/weibo_log", entity.screen_name), new File("F:/weibo5", entity.screen_name), 2000, 1, 1, 2014, 8, 30);
-			start(new File("F:/weibo_log", entity.screen_name), new File("F:/weibo5", entity.screen_name), 2023, 11, 1, 2099, 12, 31);
-		}
+		下载(Constants.网红(), "H:/weibo-网红");
 	}
 
 	private static void 下载蒋依依() throws IOException {
-		下载(Constants.蒋依依());
+		下载(Constants.蒋依依(), "H:/weibo-" + "蒋依依");
 	}
 
 	private static void 下载张婧仪() throws IOException {
-		下载(Constants.张婧仪());
+		下载(Constants.张婧仪(), "H:/weibo-" + "张婧仪");
 	}
 
 	private static void 下载张嘉倪() throws IOException {
-		下载(Constants.张嘉倪());
+		下载(Constants.张嘉倪(), "H:/weibo-" + "张嘉倪");
 	}
 
 	private static void 下载王楚然() throws IOException {
-		下载(Constants.王楚然());
+		下载(Constants.王楚然(), "H:/weibo-" + "王楚然");
 	}
 
 	private static void 下载吴优() throws IOException {
-		下载(Constants.吴优());
+		下载(Constants.吴优(), "H:/weibo-" + "吴优");
 	}
 
 	private static void 下载王秀竹() throws IOException {
-		下载(Constants.王秀竹());
+		下载(Constants.王秀竹(), "H:/weibo-" + "王秀竹");
 	}
 
 	private static void 下载热巴() throws IOException {
-//		下载(Constants.热巴());
-		for (Constants.IDNameEntity entity : Constants.热巴()) {
-			start(new File("F:/weibo_log", entity.screen_name), new File("F:/weibo", entity.screen_name), 2023, 12, 1, 2024, 12, 31);
-		}
+		下载(Constants.热巴(), "H:/weibo-" + "热巴");
 	}
 
 	private static void 下载王玉雯() throws IOException {
-		下载(Constants.王玉雯());
+		下载(Constants.王玉雯(), "H:/weibo-" + "王玉雯");
 	}
 
 	private static void 下载王紫璇() throws IOException {
-		下载(Constants.王紫璇());
+		下载(Constants.王紫璇(), "H:/weibo-" + "王紫璇");
 	}
 
 	private static void 下载程潇() throws IOException {
-//		下载(Constants.程潇());
-		for (Constants.IDNameEntity entity : Constants.程潇()) {
-			start(new File("F:/weibo_log", entity.screen_name), new File("F:/weibo", entity.screen_name), 2000, 1, 1, 2016, 11, 02);
-//			start(new File("F:/weibo_log", entity.screen_name), new File("F:/weibo", entity.screen_name), 2023, 12, 1, 2024, 12, 31);
-		}
+		下载(Constants.程潇(), "H:/weibo-" + "程潇");
 	}
 
 	private static void 下载赵露思() throws IOException {
-		下载(Constants.赵露思());
+		下载(Constants.赵露思(), "H:/weibo-" + "赵露思");
 	}
 
 	private static void 下载王鸥() throws IOException {
-		下载(Constants.王鸥());
+		下载(Constants.王鸥(), "H:/weibo-" + "王鸥");
 	}
 
 	private static void 下载欧阳娜娜() throws IOException {
-//		下载(Constants.欧阳娜娜());
-		for (Constants.IDNameEntity entity : Constants.欧阳娜娜()) {
-			start(new File("F:/weibo_log", entity.screen_name), new File("F:/weibo2", entity.screen_name), 2000, 1, 1, 2016, 6, 02);
-			start(new File("F:/weibo_log", entity.screen_name), new File("F:/weibo2", entity.screen_name), 2024, 7, 1, 2024, 12, 31);
-		}
+		下载(Constants.欧阳娜娜(), "H:/weibo-" + "欧阳娜娜");
 	}
 
 	private static void 下载林允() throws IOException {
-		下载(Constants.林允());
+		下载(Constants.林允(), "H:/weibo-" + "林允");
 	}
 
 	private static void 下载张天爱() throws IOException {
-		下载(Constants.张天爱());
+		下载(Constants.张天爱(), "H:/weibo-" + "张天爱");
 	}
 
 	private static void 下载关晓彤() throws IOException {
-		下载(Constants.关晓彤());
+		下载(Constants.关晓彤(), "H:/weibo-" + "关晓彤");
 	}
 
 	private static void 下载娜扎() throws IOException {
-		下载(Constants.娜扎());
+		下载(Constants.娜扎(), "H:/weibo-" + "娜扎");
+	}
+
+	private static void 下载胡连馨() throws IOException {
+		下载(Constants.胡连馨(), "H:/weibo-" + "胡连馨");
 	}
 
 	private static void 下载韩雪() throws IOException {
-		下载(Constants.韩雪());
+		下载(Constants.韩雪(), "H:/weibo-" + "韩雪");
 	}
 
 	private static void 下载赵今麦() throws IOException {
-		下载(Constants.赵今麦());
+		下载(Constants.赵今麦(), "H:/weibo-" + "赵今麦");
 	}
 
 	private static void 下载宋祖儿() throws IOException {
-		下载(Constants.宋祖儿());
+		下载(Constants.宋祖儿(), "H:/weibo-" + "宋祖儿");
+	}
+
+	static void 下载Mov2(Constants.IDNameEntity entity) throws IOException {
+		File picVideoLogFolder = new File("F:/weibo_log", entity.screen_name);
+		File picVideoLogFile = new File(picVideoLogFolder, Constants.PICS_VIDEOS_FILE_NAME);
+		WeiboImageDownloaderExt.startMov(picVideoLogFile, new File("H:/weibo-mov", entity.screen_name), picVideoLogFolder);
+	}
+
+	static void 下载MOV(Collection<IDNameEntity> entities) throws IOException {
+		for (Constants.IDNameEntity entity : entities) {
+			下载Mov2(entity);
+		}
+	}
+
+	private static void 下载(Collection<IDNameEntity> entities, String baseOutputFolder) throws IOException {
+		for (Constants.IDNameEntity entity : entities) {
+			start(new File("F:/weibo_log", entity.screen_name), new File(baseOutputFolder, entity.screen_name));
+		}
 	}
 
 	private static void 下载(Collection<IDNameEntity> entities) throws IOException {
-		for (Constants.IDNameEntity entity : entities) {
-			start(new File("F:/weibo_log", entity.screen_name), new File("F:/weibo", entity.screen_name));
-		}
+		下载(entities, "H:/weibo");
 	}
 
 	private static void 下载吴宣仪() throws IOException {
-//		下载(Constants.吴宣仪());
-		for (Constants.IDNameEntity entity : Constants.吴宣仪()) {
-			start(new File("F:/weibo_log", entity.screen_name), new File("F:/weibo", entity.screen_name), 2000, 1, 1, 2019, 1, 3);
-			start(new File("F:/weibo_log", entity.screen_name), new File("F:/weibo", entity.screen_name), 2024, 7, 1, 2099, 12, 31);
-		}
+		下载(Constants.吴宣仪(), "H:/weibo-" + "吴宣仪");
 	}
 
 	private static void 下载宋妍霏() throws IOException {
-		下载(Constants.宋妍霏());
+		下载(Constants.宋妍霏(), "H:/weibo-" + "宋妍霏");
 	}
 
 	private static void 下载张予曦() throws IOException {
-		下载(Constants.张予曦());
+		下载(Constants.张予曦(), "H:/weibo-" + "张予曦");
+	}
+
+	private static void 下载范冰冰() throws IOException {
+		下载(Constants.范冰冰(), "H:/weibo-" + "范冰冰");
+	}
+
+	private static void 下载秦岚() throws IOException {
+		下载(Constants.秦岚(), "H:/weibo-" + "秦岚");
+	}
+
+	private static void 下载孟佳() throws IOException {
+		下载(Constants.孟佳(), "H:/weibo-" + "孟佳");
+	}
+
+	private static void 下载杨幂() throws IOException {
+		下载(Constants.杨幂(), "H:/weibo-" + "杨幂");
 	}
 
 	private static void 下载陈都灵() throws IOException {
-//		下载(Constants.陈都灵());
-		for (Constants.IDNameEntity entity : Constants.陈都灵()) {
-			start(new File("F:/weibo_log", entity.screen_name), new File("F:/weibo", entity.screen_name), 2000, 1, 1, 2015, 5, 9);
-//			start(new File("F:/weibo_log", entity.screen_name), new File("F:/weibo", entity.screen_name), 2024, 8, 8, 2099, 12, 31);
-		}
+		下载(Constants.陈都灵(), "H:/weibo-" + "陈都灵");
 	}
 
 	private static void 下载部分生图() throws IOException {
-//		searchKeys.addAll(Set.of("林*允", "关晓*彤", "关*晓彤", "宋妍*霏", "宋*妍霏", "韩*雪", "秦*岚", "宋*祖儿", "宋祖*儿"));
-		Set<String> searchKeys = new TreeSet<>(Set.of());
-		searchKeys.addAll(Set.of("早期", "舌", "走光", "腿", "瑜伽"));
-		searchKeys.addAll(Set.of("大腿", "比基尼", "泳装", "泳衣", "网袜", "黑丝", "丝袜", "牛仔裤"));
-		searchKeys.addAll(Set.of("艾晓琪", "童瑶", "娜扎", "宋妍", "娜娜", "赵今麦", "程潇"));
-		searchKeys.addAll(Set.of("张彤", "张萌", "黄梦莹", "许晴", "唐艺昕", "王鸥"));
-		searchKeys.addAll(Set.of("韩雪", "舒畅", "马思纯", "周秀娜", "王秀竹", "苏青"));
-		searchKeys.addAll(Set.of("赵露思", "蒋梦婕", "江疏影", "李菲儿", "朱珠", "徐娇", "欧阳娜娜"));
-		searchKeys.addAll(Set.of("代斯", "梁洁", "徐璐", "璐璐", "张蓝心", "张天爱", "张嘉倪", "宋妍霏"));
-		searchKeys.addAll(Set.of("李小冉", "王紫璇", "宋祖儿", "关晓彤", "郭珍霓", "李一桐", "刘芸", "孙耀琦"));
-		searchKeys.addAll(Set.of("大幂幂", "杨幂", "姗姗", "娜比", "林允", "孙芮", "李凯馨", "蓝燕", "蓝心妍", "柳岩"));
-		searchKeys.addAll(Set.of("曾黎", "王楚然", "蒋依依", "张含韵"));
-		searchKeys.addAll(Set.of("白冰", "佟丽娅", "董璇", "张予曦", "蓝盈莹"));
-		searchKeys.addAll(Set.of("程潇", "奶潇", "潇潇", "周冬雨", "李冰冰", "范冰冰"));
-		searchKeys.addAll(Set.of("田曦薇", "刘诗诗", "诗诗", "阚清子", "秦岚"));
-		searchKeys.addAll(Set.of("景甜", "李沁", "张雪迎", "倪妮", "苗苗", "辛芷蕾"));
-		searchKeys.addAll(Set.of("陈瑶", "陈都灵", "鞠婧祎", "张婧仪", "杨超越", "娜然", "沈羽洁"));
-		searchKeys.addAll(Set.of("陈乔恩"));
+		Set<String> searchKeys = Constants.searchKeys1();
 
 		Set<String> weiboLogFolerNames = Constants.生图().stream().map(entity -> entity.screen_name).collect(Collectors.toCollection(LinkedHashSet::new));
 
 		File mainWeiboLogFolder = new File("F:\\weibo_log");
-		File mainOutputFolder = new File("F:\\weibo4");
+		File mainOutputFolder = new File("H:\\weibo-生图");
 		searchAndDownload(weiboLogFolerNames, searchKeys, mainWeiboLogFolder, mainOutputFolder);
 	}
 
@@ -230,21 +361,14 @@ public class 根据picvideolog开始下载 {
 		Set<String> searchKeys = new TreeSet<>(Set.of());
 //		searchKeys.addAll(Set.of("王鸥", "唐艺昕", "张蓝心", "郭珍霓", "梁洁", "代斯"));
 //		searchKeys.addAll(Set.of("就是阿朱啊", "阿朱", "阿珠"));
-		searchKeys.addAll(Set.of("李若嘉"));
+//		searchKeys.addAll(Set.of("李若嘉"));
+//		searchKeys.addAll(Set.of("rachel cook", "Rachel Cook", "Rachel cook", "rachel Cook", "rachelcook", "RachelCook", "Rachelcook", "rachelCook", "rachelc00k"));
+		searchKeys.addAll(Set.of("Caylee Cowan", "caylee cowan", "CayleeCowan", "cayleecowan", "Caylee-Cowan"));
+//		searchKeys.addAll(Set.of("克拉拉"));
 		Set<String> weiboLogFolerNames = Constants.明星图片().stream().map(entity -> entity.screen_name).collect(Collectors.toCollection(LinkedHashSet::new));
 
 		File mainWeiboLogFolder = new File("F:\\weibo_log");
 		File mainOutputFolder = new File("F:\\weibo3");
-		searchAndDownload(weiboLogFolerNames, searchKeys, mainWeiboLogFolder, mainOutputFolder);
-	}
-
-	private static void 下载梦醒忒远() throws IOException {
-//		Set<String> searchKeys = Set.of("程潇", "张彤", "张萌", "黄梦莹", "许晴", "唐艺昕", "王鸥", "韩雪", "舒畅", "马思纯", "周秀娜", "王秀竹", "苏青", "赵露思", "蒋梦婕", "江疏影", "李菲儿", "朱珠", "徐娇", "欧阳娜娜", "代斯", "梁洁", "徐璐", "张蓝心", "张天爱", "张嘉倪", "宋妍霏", "李小冉", "王紫璇", "宋祖儿", "关晓彤", "郭珍霓", "李一桐", "刘芸", "孙耀琦");
-		Set<String> searchKeys = Set.of("娜娜", "瑜伽", "早期", "舌", "赵今麦", "走光", "腿");
-		List<String> weiboLogFolerNames = List.of("梦醒忒远");
-
-		File mainWeiboLogFolder = new File("F:\\weibo_log");
-		File mainOutputFolder = new File("F:\\weibo2");
 		searchAndDownload(weiboLogFolerNames, searchKeys, mainWeiboLogFolder, mainOutputFolder);
 	}
 
@@ -253,7 +377,7 @@ public class 根据picvideolog开始下载 {
 			System.out.println("-->>\t" + weiboLogFolderName);
 			File weiboLogFolder = new File(mainWeiboLogFolder, weiboLogFolderName);
 			for (String searchKey : searchKeys) {
-				File outputFolder = new File(new File(mainOutputFolder, weiboLogFolderName), searchKey);
+				File outputFolder = new File(new File(mainOutputFolder, weiboLogFolderName), searchKey.replace("*", ""));
 //				File outputFolder = new File(mainOutputFolder, weiboLogFolderName);
 //				File outputFolder = new File(mainOutputFolder, searchKey);
 
@@ -277,24 +401,13 @@ public class 根据picvideolog开始下载 {
 	}
 
 	private static void 下载部分日本写真() throws IOException {
-//		List<String> searchKeys = List.of("出口亜梨沙", "奥山かずさ", "奥山和纱", "奥山", "都丸", "片山", "出口", "橋本愛実", "壇蜜", "武井咲", "相川 結", "上西怜", "上西惠");
-//		List<String> searchKeys = List.of("Kazusa Okuyama", "奥山かずさ", "奥山和纱", "奥山");
-//		List<String> searchKeys = List.of("Tomaru Sayaka", "都丸 紗也華", "都丸紗也華", "都丸纱也华", "都丸");
-//		List<String> searchKeys = List.of("Moemi Katayama", "かたやまもえみ", "かたやま もえみ", "片山 萌美", "片山萌美", "片山");
-//		List<String> searchKeys = List.of("Deguchi Arisa", "Arisa Deguchi", "でぐちありさ", "出口亜梨沙", "出口亚梨沙", "出口");
-//		List<String> searchKeys = List.of("MitsuDan", "Mitsu Dan", "Dan Mitsu", "DanMitsu", "壇蜜", "出口亜梨沙", "坛蜜");
-//		List<String> searchKeys = List.of("HashimotoManami", "Hashimoto Manami", "ManamiHashimoto", "Manami Hashimoto", "橋本マナミ", "細川愛実", "橋本愛実", "桥本真奈美", "桥本爱实");
-//		List<String> searchKeys = List.of("JonishiKei", "Jonishi Kei", "KeiJonishi", "Kei Jonishi", "じょうにし けい", "上西恵", "上西惠");
-//		List<String> searchKeys = List.of("Yumi Asahina", "YumiAsahina", "AsahinaYumi", "Asahina Yumi", "あさひな ゆみ", "朝比奈 祐未", "朝比奈祐未", "朝比奈未祐", "朝比奈");
-//		List<String> searchKeys = List.of("Watanabe Mayu", "WatanabeMayu", "Mayu", "渡辺麻友", "わたなべ まゆ", "渡边麻友");
-//		List<String> searchKeys = List.of("Ayaka Miyoshi", "AyakaMiyoshi", "Miyoshi Ayaka", "Miyoshi Ayaka", "みよし あやか", "アヤカ", "菜花", "三吉彩花");
-//		List<String> searchKeys = List.of("Yuka Kuramoti", "YukaKuramoti", "KuramotiYuka", "Kuramoti Yuka", "倉持由香", "くらもち ゆか", "仓持由香");
-		List<String> searchKeys = List.of("高橋 凛", "高橋凛", "高桥凛", "Rin Takahashi", "RinTakahashi", "Rin Tachibana", "RinTachibana", "橘花凛");
+		Set<String> searchKeys = Constants.searchKeys2();
+
 		List<String> weiboLogFolerNames = Constants.日本写真().stream().map(entity -> entity.screen_name).collect(Collectors.toList());
 		;
 
 		File mainWeiboLogFolder = new File("F:\\weibo_log");
-		File mainOutputFolder = new File("F:\\weibo2");
+		File mainOutputFolder = new File("H:\\weibo-日本写真");
 		searchAndDownload(weiboLogFolerNames, searchKeys, mainWeiboLogFolder, mainOutputFolder);
 	}
 
@@ -302,88 +415,185 @@ public class 根据picvideolog开始下载 {
 //		start(new File("F:\\weibo_log\\洋气YOUNGCHIC"), new File("F:\\weibo2\\洋气YOUNGCHIC"), "宋妍霏");
 //		start(new File("F:\\weibo_log\\洋气YOUNGCHIC"), new File("F:\\weibo2\\洋气YOUNGCHIC"), "妍霏");
 //		start(new File("F:\\weibo_log\\洋气YOUNGCHIC"), new File("F:\\weibo2\\洋气YOUNGCHIC"), "宋妍");
-//		start(new File("F:\\weibo_log\\BellaHadidCN"), new File("F:\\weibo2\\BellaHadidCN"), 2024, 6, 1, 2024, 12, 31);
+//		start(new File("F:\\weibo_log\\BellaHadidCN"), new File("F:\\weibo2\\BellaHadidCN"), 2024, 6, 1, 2099, 12, 31);
 //		start(new File("F:\\weibo_log\\MetFreckle"), new File("F:\\weibo2\\MetFreckle"), 2000, 1, 1, 2018, 1, 1);
 //		start(new File("F:\\weibo_log\\吉尼Gini"), new File("F:\\weibo2\\吉尼Gini"),2000,1,1,2019,3,9);
 //		start(new File("F:\\weibo_log\\田丽"), new File("F:\\weibo2\\田丽"), 2000, 1, 1, 2014, 12, 31);
 //		start(new File("F:\\weibo_log", "明星女神时光机"), new File("F:\\weibo2", "明星女神时光机"), false, 2020, 1, 1, 2020, 12, 31);
 //		start(new File("F:\\weibo_log\\Nana谈莉娜"), new File("F:\\weibo2\\Nana谈莉娜"), false, 2000, 1, 1, 2015, 6, 18);
+//		start(new File("F:/weibo_log", "凉森明里MiaMio"), new File("F:\\weibo5", "凉森明里MiaMio"), 2023, 10, 25, 2024, 04, 20);
 
-//		start(new File("F:\\weibo_log\\嘉行传媒"), new File("F:\\weibo2\\嘉行传媒"), false, 2000, 1, 1, 2017, 1, 31, "代斯");
-//		start(new File("F:\\weibo_log\\嘉行传媒"), new File("F:\\weibo2\\嘉行传媒"), false, 2019, 1, 1, 2019, 1, 31, "代斯");
 //		start(new File("F:/weibo_log/那年今日丨吴宣仪"), new File("F:/weibo/那年今日丨吴宣仪"), 2000, 1, 1, 2019, 3, 14);
 //		start(new File("F:\\weibo_log\\火箭少女101官博"), new File("F:\\weibo\\火箭少女101官博"), false, 2000, 1, 1, 2025, 1, 1, "吴宣仪");
-		start(new File("F:\\weibo_log\\古晨"), new File("F:\\weibo2\\古晨"), 2000, 1, 1, 2014, 3, 31);
-//		start(new File("F:\\weibo_log\\毛晓彤"), new File("F:\\weibo2\\毛晓彤"));
-//		start(new File("F:\\weibo_log\\李依晓"), new File("F:\\weibo2\\李依晓"));
-//		start(new File("F:\\weibo_log\\孟子义"), new File("F:\\weibo2\\孟子义"));
-//		start(new File("F:/weibo_log/李若嘉工作室"), new File("F:/weibo/李若嘉工作室"));
-//		start(new File("F:/weibo_log/张馨予工作室"), new File("F:/weibo/张馨予工作室"));
-//		start(new File("F:/weibo_log/李若嘉"), new File("F:/weibo/李若嘉"));
-//		start(new File("F:/weibo_log/蓝盈莹工作室"), new File("F:/weibo/蓝盈莹工作室"));
-//		start(new File("F:/weibo_log/Karena吳千語"), new File("F:/weibo/Karena吳千語"));
-//		start(new File("F:/weibo_log/唐嫣工作室"), new File("F:/weibo/唐嫣工作室"));
-//		start(new File("F:\\weibo_log", "嘉行迪丽热巴工作室"), new File("F:\\weibo", "嘉行迪丽热巴工作室"));
-//		start(new File("F:\\weibo_log", "徐璐工作室"), new File("F:\\weibo", "徐璐工作室"));
-//		start(new File("F:\\weibo_log", "景甜Studio"), new File("F:\\weibo", "景甜Studio"));
-//		start(new File("F:\\weibo_log", "王姿允Rain"), new File("F:\\weibo2", "王姿允Rain"));
-//		start(new File("F:\\weibo_log\\王紫璇工作室"), new File("F:\\weibo2/王紫璇工作室"));
-//		start(new File("F:\\weibo_log\\张天爱工作室"), new File("F:\\weibo/张天爱工作室"));
-//		start(new File("F:\\weibo_log\\无尽热恋丨1226x1109"), new File("F:\\weibo/无尽热恋丨1226x1109"));
-//		start(new File("F:\\weibo_log\\潘霜霜Shayla"), new File("F:\\weibo/潘霜霜Shayla"));
-//		start(new File("F:\\weibo_log\\林允的小号r"), new File("F:\\weibo/林允的小号r"));
-//		start(new File("F:\\weibo_log\\康可人"), new File("F:\\weibo2\\康可人"));
-//		start(new File("F:\\weibo_log\\MadisonBeerUpdates"), new File("F:\\weibo2\\MadisonBeerUpdates"));
-//		start(new File("F:\\weibo_log\\SydneySweeneyCN"), new File("F:\\weibo2\\SydneySweeneyCN"));
-//		start(new File("F:\\weibo_log\\凯瑟琳纽顿0208"), new File("F:\\weibo2\\凯瑟琳纽顿0208"));
-//		start(new File("F:\\weibo_log\\周也资讯站"), new File("F:\\weibo2\\周也资讯站"));
-//		start(new File("F:\\weibo_log\\一个阿茶-"), new File("F:\\weibo2\\一个阿茶-"));
-//		start(new File("F:\\weibo_log\\董璇"), new File("F:\\weibo2\\董璇"));
-//		start(new File("F:\\weibo_log\\李凯馨Eleanor工作室"), new File("F:\\weibo2\\李凯馨Eleanor工作室"));
-//		start(new File("F:\\weibo_log\\刘湘_11"), new File("F:\\weibo2\\刘湘_11"));
-		start(new File("F:\\weibo_log\\林逸欣Shara"), new File("F:\\weibo2\\林逸欣Shara"));
-//		start(new File("F:\\weibo_log\\郭珍霓"), new File("F:\\weibo2\\郭珍霓"));
-//		start(new File("F:\\weibo_log\\yesyanbaby"), new File("F:\\weibo2\\yesyanbaby"));
-//		start(new File("F:\\weibo_log\\陈钰琪Yukee"), new File("F:\\weibo2\\陈钰琪Yukee"));
-//		start(new File("F:\\weibo_log\\Summer许晴工作室"), new File("F:\\weibo2\\Summer许晴工作室"));
-//		start(new File("F:\\weibo_log\\许晴随行笔记"), new File("F:\\weibo3\\许晴随行笔记"));
-//		start(new File("F:\\weibo_log"), "晗卓-", new File("F:\\weibo2"));
-//		start(new File("F:\\weibo_log", "Fyuan方圆"), new File("F:\\weibo2", "Fyuan方圆"));
-//		start(new File("F:\\weibo_log", "赵露思的微博"), new File("F:\\weibo2", "赵露思的微博"));
-//		start(new File("F:\\weibo_log\\王鸥Angel图库"), new File("F:\\weibo2\\王鸥Angel图库"));
-//		start(new File("F:\\weibo_log", "朱珠ZhuZhu"), new File("F:\\weibo2", "朱珠ZhuZhu"));
-//		start(new File("F:\\weibo_log\\王紫璇CiCi"), new File("F:\\weibo2\\王紫璇CiCi"));
-//		start(new File("F:\\weibo_log", "王秀竹"), new File("F:\\weibo2", "王秀竹"));
-//		start(new File("F:\\weibo_log", "兔子日记·张嘉倪"), new File("F:\\weibo2", "兔子日记·张嘉倪"));
-//		start(new File("F:\\weibo_log", "孙芮工作室"), new File("F:\\weibo2", "孙芮工作室"));
-//		start(new File("F:\\weibo_log", "刘秦杉是个重庆妹儿"), new File("F:\\weibo2", "刘秦杉是个重庆妹儿"));
-//		start(new File("F:\\weibo_log", "隋俊波"), new File("F:\\weibo2", "隋俊波"));
-//		start(new File("F:\\weibo_log", "代斯daisy"), new File("F:\\weibo2", "代斯daisy"));
-//		start(new File("F:\\weibo_log\\徐娇工作室"), new File("F:\\weibo2\\徐娇工作室"));
-//		start(new File("F:\\weibo_log\\徐娇"), new File("F:\\weibo2\\徐娇"));
-//		start(new File("F:\\weibo_log", "演员王智"), new File("F:\\weibo2", "演员王智"));
-//		start(new File("F:\\weibo_log", "苏青工作室"), new File("F:\\weibo2", "苏青工作室"));
-//		start(new File("F:\\weibo_log\\赵蕴卓同学"), new File("F:\\weibo2\\赵蕴卓同学"));
-//		start(new File("F:\\weibo_log\\柳岩"), new File("F:\\weibo2\\柳岩"));
-//		start(new File("F:\\weibo_log", "梁洁Little"), new File("F:\\weibo2", "梁洁Little"));
-//		start(new File("F:\\weibo_log", "梁洁工作室"), new File("F:\\weibo2", "梁洁工作室"));
-//		start(new File("F:\\weibo_log", "赵露思工作室官微"), new File("F:\\weibo2", "赵露思工作室官微"));
-//		start(new File("F:\\weibo_log", "景甜"), new File("F:\\weibo2", "景甜"));
-//		start(new File("F:\\weibo_log", "蓝心妍"), new File("F:\\weibo2", "蓝心妍"));
-//		start(new File("F:\\weibo_log", "我是娜扎"), new File("F:\\weibo2", "我是娜扎"));
-//		start(new File("F:\\weibo_log", "娜扎工作室"), new File("F:\\weibo2", "娜扎工作室"));
-//		start(new File("F:\\weibo_log", "马思纯"), new File("F:\\weibo2", "马思纯"));
-//		start(new File("F:\\weibo_log", "李菲儿工作室"), new File("F:\\weibo2", "李菲儿工作室"));
-//		start(new File("F:\\weibo_log", "孙怡工作室"), new File("F:\\weibo2", "孙怡工作室"));
-//		start(new File("F:\\weibo_log", "GNZ48-刘倩倩-"), new File("F:\\weibo2", "GNZ48-刘倩倩-"));
-//		start(new File("F:\\weibo_log", "陈斯文cissie"), new File("F:\\weibo2", "陈斯文cissie"));
-//		start(new File("F:\\weibo_log", "沈羽洁er"), new File("F:\\weibo2", "沈羽洁er"));
-//		start(new File("F:\\weibo_log"), "郭碧婷", new File("F:\\weibo2"));
-//		start(new File("F:\\weibo_log"), "韩雪工作室", new File("F:\\weibo2"));
-//		start(new File("F:\\weibo_log"), "八掛海_real", new File("F:\\weibo2"));
-//		start(new File("F:\\weibo_log"), "Fairy丨0416林允Jelly", new File("F:\\weibo2"));
-//		start(new File("F:\\weibo_log"), "潘敏-", new File("F:\\weibo2"));
-//		start(new File("F:\\weibo_log\\胡冰卿"), new File("F:\\weibo2\\胡冰卿"));
-//		start(new File("F:\\weibo_log\\张彤"), new File("F:\\weibo2\\张彤"));
+//		start(new File("F:\\weibo_log\\高叶ChLoe"), new File("E:\\weibo2\\高叶ChLoe"), 2000, 1, 1, 2010, 8, 15);
+//		start(new File("F:\\weibo_log\\金晨工作室"), new File("E:\\weibo2\\金晨工作室"), 2000, 1, 1, 2019, 3, 7);
+//		start(new File("F:\\weibo_log\\古晨"), new File("F:\\weibo2\\古晨"), 2000, 1, 1, 2019, 5, 7);
+
+//		start(new File("F:\\weibo_log\\嘉行传媒"), new File("F:\\weibo2\\嘉行传媒\\黄梦莹"), "黄梦莹");
+//		start(new File("F:\\weibo_log\\嘉行传媒"), new File("F:\\weibo2\\嘉行传媒\\李溪芮"), "李溪芮");
+
+//		start(new File("F:\\weibo_log\\嘉行传媒"), new File("H:\\weibo\\嘉行传媒\\祝绪丹"), "祝绪丹");
+//		start(new File("F:\\weibo_log\\嘉行传媒"), new File("H:\\weibo\\嘉行传媒\\代斯"), "代斯");
+//		start(new File("F:/weibo_log", "陈梦儿-myYY"), new File("F:\\weibo", "陈梦儿-myYY"));
+//		start(new File("F:/weibo_log", "童瑶工作室"), new File("H:\\weibo", "童瑶工作室"));
+//		start(new File("F:/weibo_log", "蔡文静"), new File("H:\\weibo", "蔡文静"));
+//		start(new File("F:/weibo_log", "蔡文静工作室"), new File("H:\\weibo", "蔡文静工作室"));
+//		start(new File("F:/weibo_log", "邓家佳工作室"), new File("H:\\weibo", "邓家佳工作室"));
+//		start(new File("F:/weibo_log", "董璇工作室"), new File("H:\\weibo", "董璇工作室"));
+//		start(new File("F:/weibo_log", "董璇粉丝团"), new File("H:\\weibo", "董璇粉丝团"));
+//		start(new File("F:/weibo_log", "董璇"), new File("H:\\weibo", "董璇"));
+//		start(new File("F:/weibo_log", "林妍柔"), new File("H:\\weibo", "林妍柔"));
+//		start(new File("F:/weibo_log", "O0笨笨呀0O-梁洁"), new File("H:\\weibo", "O0笨笨呀0O-梁洁"));
+//		start(new File("F:/weibo_log", "Vlinder·蝴蝶效应丨关晓彤"), new File("H:\\weibo", "Vlinder·蝴蝶效应丨关晓彤"));
+//		start(new File("F:/weibo_log", "高海寧"), new File("H:\\weibo", "高海寧"));
+//		start(new File("F:/weibo_log", "吉娜爱丽丝Gina"), new File("H:\\weibo", "吉娜爱丽丝Gina"));
+//		start(new File("F:/weibo_log", "黄梦莹工作室"), new File("H:\\weibo", "黄梦莹工作室"));
+//		start(new File("F:/weibo_log", "高圆圆"), new File("H:\\weibo", "高圆圆"));
+//		start(new File("F:/weibo_log", "甘婷婷工作室"), new File("H:\\weibo", "甘婷婷工作室"));
+//		start(new File("F:/weibo_log", "甘婷婷_TT"), new File("H:\\weibo", "甘婷婷_TT"));
+//		start(new File("F:/weibo_log", "隋俊波"), new File("H:\\weibo", "隋俊波"));
+//		start(new File("F:/weibo_log", "赵柯"), new File("H:\\weibo", "赵柯"));
+//		start(new File("F:/weibo_log", "孙芮工作室"), new File("H:\\weibo", "孙芮工作室"));
+//		start(new File("F:/weibo_log", "冯文娟"), new File("H:\\weibo", "冯文娟"));
+//		start(new File("F:/weibo_log", "冯文娟工作室"), new File("H:\\weibo", "冯文娟工作室"));
+//		start(new File("F:/weibo_log", "倪虹洁"), new File("H:\\weibo", "倪虹洁"));
+//		start(new File("F:/weibo_log", "伊藤舞雪_real"), new File("H:\\weibo", "伊藤舞雪_real"));
+//		start(new File("F:/weibo_log", "安雅泰勒-乔伊"), new File("H:\\weibo", "安雅泰勒-乔伊"));
+//		start(new File("F:/weibo_log", "EstherHeesch吧"), new File("H:\\weibo", "EstherHeesch吧"));
+//		start(new File("F:/weibo_log", "希岛爱理Yua"), new File("H:\\weibo", "希岛爱理Yua"));
+//		start(new File("F:/weibo_log", "八掛海_real"), new File("H:\\weibo", "八掛海_real"));
+
+//		start(new File("F:/weibo_log", "瀧本雫葉_real"), new File("H:\\weibo", "瀧本雫葉_real"));
+//		start(new File("F:/weibo_log", "七濑爱丽丝_real"), new File("H:\\weibo", "七濑爱丽丝_real"));
+//		start(new File("F:/weibo_log", "小宵虎南_konancmore"), new File("H:\\weibo", "小宵虎南_konancmore"));
+//		start(new File("F:/weibo_log", "hThT__"), new File("H:\\weibo", "hThT__"));
+//		start(new File("F:/weibo_log", "汪小敏"), new File("H:\\weibo", "汪小敏"));
+//		start(new File("F:/weibo_log", "倪妮V"), new File("H:\\weibo", "倪妮V"));
+//		start(new File("F:/weibo_log", "倪妮工作室"), new File("H:\\weibo", "倪妮工作室"));
+//		start(new File("F:/weibo_log", "Penicillin·倪妮"), new File("H:\\weibo", "Penicillin·倪妮"));
+//		start(new File("F:/weibo_log", "北纬26度想Ni·倪妮"), new File("H:\\weibo", "北纬26度想Ni·倪妮"));
+//		start(new File("F:/weibo_log", "Yakisa彭雅琦"), new File("H:\\weibo", "Yakisa彭雅琦"));
+//		start(new File("F:/weibo_log", "KleinBlue·倪妮"), new File("H:\\weibo", "KleinBlue·倪妮"));
+//		start(new File("F:/weibo_log", "六金yE"), new File("H:\\weibo", "六金yE"));
+//		start(new File("F:/weibo_log", "是你的程儿"), new File("H:\\weibo", "是你的程儿"));
+//		start(new File("F:/weibo_log", "小白金金"), new File("H:\\weibo", "小白金金"));
+//		start(new File("F:/weibo_log", "王瑞子715"), new File("H:\\weibo", "王瑞子715"));
+//		start(new File("F:/weibo_log", "yesyanbaby"), new File("H:\\weibo", "yesyanbaby"));
+//		start(new File("F:/weibo_log", "河北彩伽-元河北彩花"), new File("H:\\weibo", "河北彩伽-元河北彩花"));
+//		start(new File("F:/weibo_log", "河北彩伽"), new File("H:\\weibo", "河北彩伽"));
+//		start(new File("F:/weibo_log", "月与玫瑰__娜然Naran"), new File("H:\\weibo", "月与玫瑰__娜然Naran"));
+//		start(new File("F:/weibo_log", "AprilFox_Naran娜然"), new File("H:\\weibo", "AprilFox_Naran娜然"));
+//		start(new File("F:/weibo_log", "娜然丨NaranDaily"), new File("H:\\weibo", "娜然丨NaranDaily"));
+//		start(new File("F:/weibo_log", "娜然Naran工作室"), new File("H:\\weibo", "娜然Naran工作室"));
+//		start(new File("F:/weibo_log", "娜然Naran"), new File("H:\\weibo", "娜然Naran"));
+//		start(new File("F:/weibo_log", "林允Jelly"), new File("H:\\weibo", "林允Jelly"));
+//		start(new File("F:/weibo_log", "热依扎"), new File("H:\\weibo", "热依扎"));
+//		start(new File("F:/weibo_log", "张芷溪"), new File("H:\\weibo", "张芷溪"));
+//		start(new File("F:/weibo_log", "王子文工作室微博"), new File("H:\\weibo", "王子文工作室微博"));
+//		start(new File("F:/weibo_log", "张萌"), new File("H:\\weibo", "张萌"));
+//		start(new File("F:/weibo_log", "李佳桐sep"), new File("H:\\weibo", "李佳桐sep"));
+//		start(new File("F:/weibo_log", "李依晓"), new File("H:\\weibo", "李依晓"));
+//		start(new File("F:/weibo_log", "顾璇"), new File("H:\\weibo", "顾璇"));
+//		start(new File("F:/weibo_log", "食梦鲨"), new File("H:\\weibo", "食梦鲨"));
+//		start(new File("F:/weibo_log", "李如儒"), new File("H:\\weibo", "李如儒"));
+//		start(new File("F:/weibo_log", "王乐君"), new File("H:\\weibo", "王乐君"));
+//		start(new File("F:/weibo_log", "顾璇"), new File("H:\\weibo", "顾璇"));
+//		start(new File("F:/weibo_log", "李依晓"), new File("H:\\weibo", "李依晓"));
+//		start(new File("F:/weibo_log", "金佳悦-"), new File("H:\\weibo", "金佳悦-"));
+//		start(new File("F:/weibo_log", "唐艺昕工作室"), new File("H:\\weibo", "唐艺昕工作室"));
+//		start(new File("F:/weibo_log", "张嘉倪"), new File("H:\\weibo", "张嘉倪"));
+//		start(new File("F:/weibo_log", "丹琳"), new File("H:\\weibo", "丹琳"));
+//		start(new File("F:/weibo_log", "松岡李那LinahM"), new File("H:\\weibo", "松岡李那LinahM"), 2024, 12, 1, 2099, 1, 11);
+//		start(new File("F:/weibo_log", "刘美彤"), new File("H:\\weibo", "刘美彤"));
+//		start(new File("F:/weibo_log", "刘美含"), new File("H:\\weibo", "刘美含"));
+//		start(new File("F:/weibo_log", "孙嘉璐Ruby"), new File("H:\\weibo", "孙嘉璐Ruby"));
+//		start(new File("F:/weibo_log", "包上恩"), new File("H:\\weibo", "包上恩"));
+//		start(new File("F:/weibo_log", "孙雪宁ooo"), new File("H:\\weibo", "孙雪宁ooo"));
+//		start(new File("F:/weibo_log", "YUNAN男男"), new File("H:\\weibo", "YUNAN男男"));
+//		start(new File("F:/weibo_log", "老余那些事"), new File("H:\\weibo", "老余那些事"));
+//		start(new File("F:/weibo_log", "蓝盈莹工作室"), new File("H:\\weibo", "蓝盈莹工作室"));
+//		start(new File("F:/weibo_log", "韩雪"), new File("H:\\weibo", "韩雪"));
+//		start(new File("F:/weibo_log", "张芷溪"), new File("H:\\weibo", "张芷溪"));
+//		start(new File("F:/weibo_log", "不2不叫周淑怡"), new File("H:\\weibo", "不2不叫周淑怡"));
+//		start(new File("F:/weibo_log", "刘芊螢_LQY"), new File("H:\\weibo", "刘芊螢_LQY"));
+//		start(new File("F:/weibo_log", "曲尼次仁"), new File("H:\\weibo", "曲尼次仁"));
+//		start(new File("F:/weibo_log", "蓝心ZoeZhang"), new File("H:\\weibo", "蓝心ZoeZhang"));
+//		start(new File("F:/weibo_log", "胡连馨儿"), new File("H:\\weibo", "胡连馨儿"));
+//		start(new File("F:/weibo_log", "胡连馨studio"), new File("H:\\weibo", "胡连馨studio"));
+//		start(new File("F:/weibo_log", "郭四火-"), new File("H:\\weibo", "郭四火-"));
+//		start(new File("F:/weibo_log", "吳千語全球官方後援會"), new File("H:\\weibo", "吳千語全球官方後援會"));
+//		start(new File("F:/weibo_log", "青蛙公主爱凌"), new File("H:\\weibo", "青蛙公主爱凌"));
+//		start(new File("F:/weibo_log", "许佳琪_OFFICIAL"), new File("H:\\weibo", "许佳琪_OFFICIAL"));
+//		start(new File("F:/weibo_log", "许佳琪kiki"), new File("H:\\weibo", "许佳琪kiki"));
+//		start(new File("F:/weibo_log", "蔡卓宜工作室"), new File("H:\\weibo", "蔡卓宜工作室"));
+//		start(new File("F:/weibo_log", "是蔡卓宜"), new File("H:\\weibo", "是蔡卓宜"));
+//		start(new File("F:/weibo_log", "孟佳工作室"), new File("H:\\weibo", "孟佳工作室"));
+//		start(new File("F:/weibo_log", "江疏影"), new File("H:\\weibo", "江疏影"));
+//		start(new File("F:/weibo_log", "毛晓彤"), new File("H:\\weibo", "毛晓彤"));
+//		start(new File("F:/weibo_log", "李依晓"), new File("H:\\weibo", "李依晓"));
+//		start(new File("F:/weibo_log", "孟子义"), new File("H:\\weibo", "孟子义"));
+//		start(new File("F:/weibo_log", "李若嘉工作室"), new File("H:\\weibo", "李若嘉工作室"));
+//		start(new File("F:/weibo_log", "火箭少女101官博"), new File("H:\\weibo", "火箭少女101官博"), "吴宣仪");
+//		start(new File("F:/weibo_log", "青蛙公主爱凌"), new File("H:\\weibo", "青蛙公主爱凌"));
+//		start(new File("F:/weibo_log", "傅嘉莉KellyFu"), new File("H:\\weibo", "傅嘉莉KellyFu"), 2024, 12, 1, 2099, 1, 11);
+//		start(new File("F:/weibo_log", "张馨予工作室"), new File("H:\\weibo", "张馨予工作室"));
+//		start(new File("F:/weibo_log", "李若嘉"), new File("H:\\weibo", "李若嘉"));
+//		start(new File("F:/weibo_log", "星图驿站"), new File("H:\\weibo", "星图驿站"), 2024, 12, 1, 2099, 1, 11);
+//		start(new File("F:/weibo_log", "星素鉴赏"), new File("H:\\weibo", "星素鉴赏"), 2024, 12, 1, 2099, 1, 11);
+//		start(new File("F:/weibo_log", "唐嫣工作室"), new File("H:\\weibo", "唐嫣工作室"));
+//		start(new File("F:/weibo_log", "歐陽娜娜Nana"), new File("H:\\weibo", "歐陽娜娜Nana"));
+//		start(new File("F:/weibo_log", "歐陽娜娜Nana工作室"), new File("H:\\weibo", "歐陽娜娜Nana工作室"));
+//		start(new File("F:/weibo_log", "洋气YOUNGCHIC"), new File("H:\\weibo", "洋气YOUNGCHIC"), "宋妍霏");
+//		start(new File("F:/weibo_log", "张婧仪"), new File("H:\\weibo", "张婧仪"));
+//		start(new File("F:/weibo_log", "张婧仪工作室"), new File("H:\\weibo", "张婧仪工作室"));
+//		start(new File("F:/weibo_log", "沈羽洁er"), new File("H:\\weibo", "沈羽洁er"));
+//		start(new File("F:/weibo_log", "于雯_"), new File("H:\\weibo", "于雯_"));
+//		start(new File("F:/weibo_log", "Karena吳千語"), new File("H:\\weibo", "Karena吳千語"));
+//		start(new File("F:/weibo_log", "徐璐工作室"), new File("H:\\weibo", "徐璐工作室"));
+//		start(new File("F:/weibo_log", "蒋梦婕工作室"), new File("H:\\weibo", "蒋梦婕工作室"));
+//		start(new File("F:/weibo_log", "张馨予"), new File("H:\\weibo", "张馨予"));
+//		start(new File("F:/weibo_log", "江疏影"), new File("H:\\weibo", "江疏影"));
+//		start(new File("F:/weibo_log", "姜珮瑶"), new File("H:\\weibo", "姜珮瑶"), 2023, 1, 1, 2099, 1, 11);
+//		start(new File("F:/weibo_log", "蒋梦婕"), new File("H:\\weibo", "蒋梦婕"));
+//		start(new File("F:/weibo_log", "王子文Ava"), new File("H:\\weibo", "王子文Ava"));
+//		start(new File("F:/weibo_log", "无尽热恋丨1226x1109"), new File("H:\\weibo", "无尽热恋丨1226x1109"));
+//		start(new File("F:/weibo_log", "歐陽娜娜Nana"), new File("H:\\weibo", "歐陽娜娜Nana"));
+//		start(new File("F:/weibo_log", "潘霜霜Shayla"), new File("H:\\weibo", "潘霜霜Shayla"));
+//		start(new File("F:/weibo_log", "李凯馨Eleanor工作室"), new File("H:\\weibo", "李凯馨Eleanor工作室"));
+//		start(new File("F:/weibo_log", "Ming奚梦瑶"), new File("H:\\weibo", "Ming奚梦瑶"), 2024, 12, 1, 2099, 1, 11);
+//		start(new File("F:/weibo_log", "赵今麦angel"), new File("H:\\weibo", "赵今麦angel"));
+//		start(new File("F:/weibo_log", "食梦鲨"), new File("H:\\weibo", "食梦鲨"));
+//		start(new File("F:/weibo_log", "徐冬冬"), new File("H:\\weibo", "徐冬冬"));
+//		start(new File("F:/weibo_log", "李則慧"), new File("H:\\weibo", "李則慧"), 2024, 12, 1, 2099, 1, 11);
+//		start(new File("F:/weibo_log", "BDD东"), new File("H:\\weibo", "BDD东"));
+//		start(new File("F:/weibo_log", "王紫璇CiCi"), new File("H:\\weibo", "王紫璇CiCi"));
+//		start(new File("F:/weibo_log", "林允的小号r"), new File("H:\\weibo", "林允的小号r"));
+//		start(new File("F:/weibo_log", "康可人"), new File("H:\\weibo", "康可人"));
+//		start(new File("F:/weibo_log", "陈乔恩"), new File("H:\\weibo", "陈乔恩"));
+//		start(new File("F:/weibo_log", "吉尼Gini"), new File("H:\\weibo", "吉尼Gini"), 2024, 12, 1, 2099, 1, 11);
+//		start(new File("F:/weibo_log", "汤梦佳"), new File("H:\\weibo", "汤梦佳"), 2024, 12, 1, 2099, 1, 11);
+//		start(new File("F:/weibo_log", "明星生图现场"), new File("H:\\weibo", "明星生图现场"), 2024, 12, 1, 2099, 1, 11);
+//		start(new File("F:/weibo_log", "Fyuan方圆"), new File("H:\\weibo", "Fyuan方圆"));
+//		start(new File("F:/weibo_log", "林逸欣Shara"), new File("H:\\weibo", "林逸欣Shara"));
+//		start(new File("F:/weibo_log", "刘湘_11"), new File("H:\\weibo", "刘湘_11"));
+//		start(new File("F:/weibo_log", "钟楚曦工作室"), new File("H:\\weibo", "钟楚曦工作室"));
+//		start(new File("F:/weibo_log", "钟楚曦"), new File("H:\\weibo", "钟楚曦"));
+//		start(new File("F:/weibo_log", "一个阿茶-"), new File("H:\\weibo", "一个阿茶-"));
+//		start(new File("F:/weibo_log", "周也资讯站"), new File("H:\\weibo", "周也资讯站"));
+//		start(new File("F:/weibo_log", "MetFreckle"), new File("H:\\weibo", "MetFreckle"), 2024, 12, 1, 2099, 1, 11);
+//		start(new File("F:/weibo_log", "·AllForZendaya·"), new File("H:\\weibo", "·AllForZendaya·"), 2024, 12, 1, 2099, 1, 11);
+//		start(new File("F:/weibo_log", "SydneySweeneyCN"), new File("H:\\weibo", "SydneySweeneyCN"));
+//		start(new File("F:/weibo_log", "MadisonBeerUpdates"), new File("H:\\weibo", "MadisonBeerUpdates"));
+//		start(new File("F:/weibo_log", "凯瑟琳纽顿0208"), new File("H:\\weibo", "凯瑟琳纽顿0208"));
+//		start(new File("F:/weibo_log", "MckennaGraceCN"), new File("H:\\weibo", "MckennaGraceCN"));
+//		start(new File("F:/weibo_log", "Angel_AlessandraAmbrosio"), new File("H:\\weibo", "Angel_AlessandraAmbrosio"));
+//		start(new File("F:/weibo_log", "安雅泰勒乔伊"), new File("H:\\weibo", "安雅泰勒乔伊"));
+//		start(new File("F:/weibo_log", "安雅泰勒-乔伊"), new File("H:\\weibo", "安雅泰勒-乔伊"));
+//		start(new File("F:/weibo_log", "BellaHadidCN"), new File("H:\\weibo", "BellaHadidCN"));
+//		start(new File("F:/weibo_log", "Rachelcook1995"), new File("H:\\weibo", "Rachelcook1995"),"RachelCook");
+//		start(new File("F:/weibo_log", "Rachelcook1995"), new File("H:\\weibo", "Rachelcook1995"),"rachelc00k");
+//		start(new File("F:/weibo_log", "Rachelcook1995"), new File("H:\\weibo", "Rachelcook1995"),"rachel cook​​​");
+//		start(new File("F:/weibo_log", "Rachelcook1995"), new File("H:\\weibo", "Rachelcook1995"),"Rachel Cook");
+//		start(new File("F:/weibo_log", "rachelcook14"), new File("H:\\weibo", "rachelcook14"));
 	}
 }

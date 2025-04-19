@@ -17,7 +17,10 @@ public class 根据分组扫描 {
 //		扫描生图();
 //		扫描美欧日();
 //		扫描特别关注();
-		扫描网红();
+//		扫描网红();
+//		扫描明星3();
+//		扫描明星2();
+		扫描明星1();
 	}
 
 	public static void 扫描特别关注() throws IOException {
@@ -42,6 +45,18 @@ public class 根据分组扫描 {
 
 	public static void 扫描网红() throws IOException {
 		start("网红.log", "4973738839774902");
+	}
+
+	public static void 扫描明星1() throws IOException {
+		start("明星1.log", "4973731396454291");
+	}
+
+	public static void 扫描明星2() throws IOException {
+		start("明星2.log", "4973738351659868");
+	}
+
+	public static void 扫描明星3() throws IOException {
+		start("明星3.log", "4973738374202435");
 	}
 
 	private static void start(String followFileName, String groupId) throws IOException {
