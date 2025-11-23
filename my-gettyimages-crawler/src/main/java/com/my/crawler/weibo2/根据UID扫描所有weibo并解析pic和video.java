@@ -19,175 +19,80 @@ public class 根据UID扫描所有weibo并解析pic和video {
 	static String folderBasePath = "F:\\weibo_log";
 
 	public static void main(String[] args) throws IOException {
-//		扫描半年可见();
-//		扫描特别关注();
-		扫描网红();
-//		扫描生图();
-
-//		扫描欧阳娜娜();
-//		扫描宋妍霏();
-//		扫描王紫璇();
-//		扫描赵露思();
-//		扫描张天爱();
-//		扫描王鸥();
-//		扫描娜扎();
-//		扫描林允();
-//		扫描韩雪();
-//		扫描关晓彤();
-//		扫描吴宣仪();
-//		扫描热巴();
-//		扫描宋祖儿();
-//		扫描程潇();
+		扫描生图();
+//		扫描(Constants.半年可见());
+//		扫描(Constants.特别关注());
+//		扫描(Constants.网红());
 //
-//		扫描王玉雯();
-//		扫描王秀竹();
-//		扫描吴优();
-//		扫描王楚然();
-//		扫描赵今麦();
-//		扫描蒋依依();
-//		扫描张婧仪();
-//		扫描张予曦();
-//		扫描陈都灵();
-//		扫描胡连馨();
-//		扫描许佳琪();
-//		扫描杨幂();
-//		扫描孟佳();
-//		扫描秦岚();
-//		扫描范冰冰();
-//		扫描蔡文静();
-//		扫描白鹿();
-//		扫描倪妮();
-//		扫描黛薇卡();
-//		扫描李一桐();
-//		扫描周洁琼();
-//		扫描王鹤润();
-//		扫描孟子义();
-//		扫描李沁();
-//		扫描江疏影();
+//		扫描(Constants.欧阳娜娜());
+//		扫描(Constants.宋妍霏());
+//		扫描(Constants.王紫璇());
+//		扫描(Constants.赵露思());
+//		扫描(Constants.张天爱());
+//		扫描(Constants.王鸥());
+//		扫描(Constants.娜扎());
+//		扫描(Constants.林允());
+//		扫描(Constants.韩雪());
+//		扫描(Constants.关晓彤());
+//		扫描(Constants.吴宣仪());
+//		扫描(Constants.热巴());
+//		扫描(Constants.宋祖儿());
+//		扫描(Constants.程潇());
+//
+//		扫描(Constants.王玉雯());
+//		扫描(Constants.王秀竹());
+//		扫描(Constants.吴优());
+//		扫描(Constants.王楚然());
+//		扫描(Constants.赵今麦());
+//		扫描(Constants.蒋依依());
+//		扫描(Constants.张婧仪());
+//		扫描(Constants.张予曦());
+//		扫描(Constants.陈都灵());
+//		扫描(Constants.胡连馨());
+//		扫描(Constants.许佳琪());
+//		扫描(Constants.杨幂());
+//		扫描(Constants.孟佳());
+//		扫描(Constants.秦岚());
+//		扫描(Constants.范冰冰());
+//		扫描(Constants.蔡文静());
+//		扫描(Constants.白鹿());
+//		扫描(Constants.倪妮());
+//		扫描(Constants.李一桐());
+//		扫描(Constants.周洁琼());
+//		扫描(Constants.王鹤润());
+//		扫描(Constants.孟子义());
+//		扫描(Constants.李沁());
+//		扫描(Constants.江疏影());
+//		扫描(Constants.景甜());
+//		
+//		扫描(Constants.孙芮());
+//		扫描(Constants.周也());
+//		扫描(Constants.章若楠());
+//		扫描(Constants.杨超越());
+//		扫描(Constants.鞠婧祎());
+//		扫描(Constants.傅菁());
+//		扫描(Constants.田曦薇());
+//		扫描(Constants.钟楚曦());
+//		扫描(Constants.张雪迎());
+//		扫描(Constants.辛芷蕾());
+//		扫描(Constants.曾黎());
+//		扫描(Constants.刘诗诗());
+//		扫描(Constants.代斯());
+//		扫描(Constants.梁洁());
+//		扫描(Constants.张嘉倪());
+//		扫描(Constants.徐璐());
 
-//		扫描欧美();
-//		扫描韩国();
+//		扫描(Constants.黄杨钿甜());
+//		扫描(Constants.欧美());
+//		扫描(Constants.韩国());
 //		扫描日本写真();
 //		扫描日本演员();
 //		扫描明星图片();
 //		扫描明星1();
 //		扫描明星2();
 //		扫描明星3();
-		
-//		扫描张嘉倪();
 
-//		开始扫描();
-	}
-
-	private static void 扫描江疏影() throws IOException {
-		扫描(Constants.江疏影());
-	}
-	private static void 扫描李沁() throws IOException {
-		扫描(Constants.李沁());
-	}
-	private static void 扫描孟子义() throws IOException {
-		扫描(Constants.孟子义());
-	}
-	private static void 扫描王鹤润() throws IOException {
-		扫描(Constants.王鹤润());
-	}
-	private static void 扫描周洁琼() throws IOException {
-		扫描(Constants.周洁琼());
-	}
-	private static void 扫描李一桐() throws IOException {
-		扫描(Constants.李一桐());
-	}
-	private static void 扫描黛薇卡() throws IOException {
-		扫描(Constants.黛薇卡());
-	}
-	private static void 扫描倪妮() throws IOException {
-		扫描(Constants.倪妮());
-	}
-	private static void 扫描白鹿() throws IOException {
-		扫描(Constants.白鹿());
-	}
-	private static void 扫描蔡文静() throws IOException {
-		扫描(Constants.蔡文静());
-	}
-	private static void 扫描范冰冰() throws IOException {
-		扫描(Constants.范冰冰());
-	}
-	private static void 扫描秦岚() throws IOException {
-		扫描(Constants.秦岚());
-	}
-	private static void 扫描孟佳() throws IOException {
-		扫描(Constants.孟佳());
-	}
-	private static void 扫描杨幂() throws IOException {
-		扫描(Constants.杨幂());
-	}
-
-	private static void 扫描许佳琪() throws IOException {
-		扫描(Constants.许佳琪());
-	}
-
-	private static void 扫描陈都灵() throws IOException {
-		扫描(Constants.陈都灵());
-	}
-
-	private static void 扫描半年可见() throws IOException {
-		扫描(Constants.半年可见());
-	}
-
-	private static void 扫描特别关注() throws IOException {
-		扫描(Constants.特别关注());
-	}
-
-	private static void 扫描赵今麦() throws IOException {
-		扫描(Constants.赵今麦());
-	}
-
-	private static void 扫描王秀竹() throws IOException {
-		扫描(Constants.王秀竹());
-	}
-
-	private static void 扫描胡连馨() throws IOException {
-		扫描(Constants.胡连馨());
-	}
-
-	private static void 扫描王楚然() throws IOException {
-		扫描(Constants.王楚然());
-	}
-
-	private static void 扫描热巴() throws IOException {
-		扫描(Constants.热巴());
-	}
-
-	private static void 扫描王玉雯() throws IOException {
-		扫描(Constants.王玉雯());
-	}
-
-	private static void 扫描王紫璇() throws IOException {
-		扫描(Constants.王紫璇());
-	}
-
-	private static void 扫描程潇() throws IOException {
-		扫描(Constants.程潇());
-	}
-
-	private static void 扫描宋祖儿() throws IOException {
-		扫描(Constants.宋祖儿());
-	}
-
-	private static void 扫描欧阳娜娜() throws IOException {
-		扫描(Constants.欧阳娜娜());
-	}
-
-	private static void 扫描王鸥() throws IOException {
-		扫描(Constants.王鸥());
-	}
-
-	private static void 扫描赵露思() throws IOException {
-		扫描(Constants.赵露思());
-	}
-
-	private static void 扫描张婧仪() throws IOException {
-		扫描(Constants.张婧仪());
+		开始扫描();
 	}
 
 	private static void 扫描(Collection<IDNameEntity> entities) throws IOException {
@@ -198,37 +103,20 @@ public class 根据UID扫描所有weibo并解析pic和video {
 			根据picvideolog开始下载.下载Mov2(idNameEntity);
 		}
 	}
-
-	private static void 扫描娜扎() throws IOException {
-		扫描(Constants.娜扎());
-	}
-
-	private static void 扫描张天爱() throws IOException {
-		扫描(Constants.张天爱());
-	}
-
-	private static void 扫描张嘉倪() throws IOException {
-		扫描(Constants.张嘉倪());
-	}
-
-	private static void 扫描关晓彤() throws IOException {
-		扫描(Constants.关晓彤());
-	}
-
 	private static void 扫描欧美() throws IOException {
 		扫描(Constants.欧美());
 	}
 
 	private static void 扫描韩国() throws IOException {
-		扫描(Constants.韩国());
+		
 	}
 
 	private static void 扫描日本写真() throws IOException {
-		扫描(Constants.日本写真());
-	}
-
-	private static void 扫描日本演员() throws IOException {
-		扫描(Constants.日本演员());
+		for (IDNameEntity idNameEntity : Constants.日本写真()) {
+			System.out.println("id: " + idNameEntity.id + "\t name: " + idNameEntity.screen_name);
+			start(idNameEntity.getId(), new File(folderBasePath, idNameEntity.screen_name));
+			Constants.randomSleepLong();
+		}
 	}
 
 	private static void 扫描生图() throws IOException {
@@ -238,38 +126,6 @@ public class 根据UID扫描所有weibo并解析pic和video {
 			start(idNameEntity.getId(), new File(folderBasePath, idNameEntity.screen_name));
 			Constants.randomSleepLong();
 		}
-	}
-
-	private static void 扫描吴优() throws IOException {
-		扫描(Constants.吴优());
-	}
-
-	private static void 扫描吴宣仪() throws IOException {
-		扫描(Constants.吴宣仪());
-	}
-
-	private static void 扫描林允() throws IOException {
-		扫描(Constants.林允());
-	}
-
-	private static void 扫描宋妍霏() throws IOException {
-		扫描(Constants.宋妍霏());
-	}
-
-	private static void 扫描韩雪() throws IOException {
-		扫描(Constants.韩雪());
-	}
-
-	private static void 扫描蒋依依() throws IOException {
-		扫描(Constants.蒋依依());
-	}
-
-	private static void 扫描网红() throws IOException {
-		扫描(Constants.网红());
-	}
-
-	private static void 扫描张予曦() throws IOException {
-		扫描(Constants.张予曦());
 	}
 
 	private static void 扫描明星图片() throws IOException {
@@ -286,8 +142,56 @@ public class 根据UID扫描所有weibo并解析pic和video {
 	}
 
 	private static void 开始扫描() throws IOException {
+//		start("3603256695", new File(folderBasePath, "梦醒忒远"));
+//		start("5077791396", new File(folderBasePath, "黄杨钿甜"));
+		
+//		start("1628482500", new File(folderBasePath, "陆妍淇"));
+//		start("1262719025", new File(folderBasePath, "毛林林NIKITA"));
+//		start("5408683366", new File(folderBasePath, "合诗雨Hermia"));
+//		start("7765311497", new File(folderBasePath, "明星生图严选"));
+//		start("5783471428", new File(folderBasePath, "刘承羽Natasha"));
+//		start("1301064830", new File(folderBasePath, "柴蔚"));
+//		根据picvideolog开始下载.下载Mov2(new IDNameEntity("5408683366", "柴蔚"));
+//		start("3179885602", new File(folderBasePath, "钟晨瑶"));
+//		start("1749646275", new File(folderBasePath, "何雨桐MANGO"));
+//		根据picvideolog开始下载.下载Mov2(new IDNameEntity("3179885602", "何雨桐MANGO"));
+//		start("7754982812", new File(folderBasePath, "小艾同学下课了吗"));
+//		start("3511260684", new File(folderBasePath, "_黃芯靈"));
+//		start("5525618252", new File(folderBasePath, "大鹅鹅Ran"));
+//		start("3833024804", new File(folderBasePath, "徐艺真的微博"));
+//		start("7983000031", new File(folderBasePath, "河北彩伽2"));
+//		start("3151770020", new File(folderBasePath, "蓝心妍工作室"));
+//		start("1265241322", new File(folderBasePath, "刘雨欣yoyoliu"));
+//		start("1752051394", new File(folderBasePath, "劉心悠Annie"));
+//		start("1281950453", new File(folderBasePath, "周扬"));
+//		start("2034565060", new File(folderBasePath, "许晴随行笔记"));
+//		start("5690339577", new File(folderBasePath, "Summer许晴工作室"));
+//		start("1214548420", new File(folderBasePath, "郭珍霓"));
+//		start("1258859614", new File(folderBasePath, "我是江一燕"));
+//		根据picvideolog开始下载.下载Mov2(new IDNameEntity("1258859614", "我是江一燕"));
+//		start("1890196401", new File(folderBasePath, "不2不叫周淑怡"));
+//		根据picvideolog开始下载.下载Mov2(new IDNameEntity("1890196401", "不2不叫周淑怡"));
+//		start("1890196401", new File(folderBasePath, "不2不叫周淑怡"));
+//		根据picvideolog开始下载.下载Mov2(new IDNameEntity("1890196401", "不2不叫周淑怡"));
+//		start("6650714202", new File(folderBasePath, "李凯馨Eleanor工作室"));
+//		根据picvideolog开始下载.下载Mov2(new IDNameEntity("6650714202", "李凯馨Eleanor工作室"));
+//		start("6430354194", new File(folderBasePath, "杨采钰工作室"));
+//		根据picvideolog开始下载.下载Mov2(new IDNameEntity("6430354194", "杨采钰工作室"));
+//		start("1006421732", new File(folderBasePath, "陈昊宇Amy"));
+//		根据picvideolog开始下载.下载Mov2(new IDNameEntity("1006421732", "陈昊宇Amy"));
+//		start("7661259195", new File(folderBasePath, "Official_权恩妃"));
+//		根据picvideolog开始下载.下载Mov2(new IDNameEntity("7661259195", "Official_权恩妃"));
+//		start("3617364884", new File(folderBasePath, "彭小苒"));
+//		根据picvideolog开始下载.下载Mov2(new IDNameEntity("3617364884", "彭小苒"));
+//		start("2111083372", new File(folderBasePath, "乔欣Bridgette"));
+//		根据picvideolog开始下载.下载Mov2(new IDNameEntity("2111083372", "乔欣Bridgette"));
+//		start("3617364884", new File(folderBasePath, "彭小苒"));
+//		根据picvideolog开始下载.下载Mov2(new IDNameEntity("3617364884", "彭小苒"));
+//		start("6203942537", new File(folderBasePath, "请往我的生活里加满糖谢谢"));
+//		根据picvideolog开始下载.下载Mov2(new IDNameEntity("6203942537", "请往我的生活里加满糖谢谢"));
+//		start("5503504780", new File(folderBasePath, "吉娜爱丽丝Gina"));
 //		start("7772266364", new File(folderBasePath, "Rachelcook1995"));
-		start("5638789392", new File(folderBasePath, "rachelcook14"));
+//		start("5638789392", new File(folderBasePath, "rachelcook14"));
 //		start("6459256544", new File(folderBasePath, "上戏啦"));
 //		start("3807003830", new File(folderBasePath, "张若晞Roxie"));
 //		start("7284275957", new File(folderBasePath, "坠落星空·江疏影"));
@@ -387,7 +291,6 @@ public class 根据UID扫描所有weibo并解析pic和video {
 //		start("1714246692", new File(folderBasePath, "傅嘉莉KellyFu"));
 //		start("1297916241", new File(folderBasePath, "洋气YOUNGCHIC"));
 //		start("7782739992", new File(folderBasePath, "无尽热恋丨1226x1109"));
-//		start("3603256695", new File(folderBasePath, "梦醒忒远"));
 //		start("6650714202", new File(folderBasePath, "李凯馨Eleanor工作室"));
 //		start("7749127987", new File(folderBasePath, "·AllForZendaya·"));
 //		start("3635953843", new File(folderBasePath, "MadisonBeerUpdates"));

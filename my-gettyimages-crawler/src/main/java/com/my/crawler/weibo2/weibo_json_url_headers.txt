@@ -1,17 +1,17 @@
-GET /ajax/friendships/friends?page=1&uid=3603256695 HTTP/2
+GET /ajax/log/action?type=pic&uicode=20000390&fid=232150&act_code=4874&ext=module%3A01&luicode=20000390&t=1761881132110 HTTP/2
 Host: weibo.com
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:137.0) Gecko/20100101 Firefox/137.0
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:144.0) Gecko/20100101 Firefox/144.0
 Accept: application/json, text/plain, */*
 Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
 Accept-Encoding: gzip, deflate, br, zstd
 X-Requested-With: XMLHttpRequest
-client-version: v2.47.53
-server-version: v2025.04.15.1
-X-XSRF-TOKEN: v3XIvrvpfylWNWn74ymtpqFf
+client-version: v2.47.129
+server-version: v2025.10.24.3
+X-XSRF-TOKEN: DQfyQW7EfjJ6a3moXyj0Ntx1
 Connection: keep-alive
-Referer: https://weibo.com/u/page/follow/3603256695
-Cookie: SINAGLOBAL=5564459443412.725.1691551520655; ULV=1742702910226:61:4:1:3059992436340.0522.1742702910122:1742297448432; SCF=AifPxbBkS5LEGO2DDos3PdBIiJETOMmkyQOot4mO5x2FxhAPE69w2uDOzGO94t9eWh4nNABbH8Xn7di1-6O0tQQ.; ALF=1747310818; SUB=_2A25K-juyDeRhGeVI61ET9SjKwjmIHXVmdjF6rDV8PUJbkNB-LVLGkW1NTAOtphFikiD160TZEfK_hBGz3q3fZri6; SUBP=0033WrSXqPxfM725Ws9jqgMF55529P9D9WFOy.hqXqwQGpGTla2erusc5JpX5KMhUgL.FoeceheESKqc1K-2dJLoI0YLxKqL1hnL1K2LxKML1-2L1hBLxKqLBKzLBKqLxKqL1heLBoeLxK-LBKBLB-2LxKnLB.qL1-eLxKBLB.2L1hqt; XSRF-TOKEN=v3XIvrvpfylWNWn74ymtpqFf; _s_tentry=weibo.com; Apache=3059992436340.0522.1742702910122; WBPSESS=XMMIwdETR_JT96BLYlgiKdRbtXi8_udAJVxUz_5SaKaRc8ybopEA05ip9OI3ziiuGFx3RdMizaDWfR1QDKpRgeNj4Ep5BV-3k4lcOPZm-nYc0boyf3G_u5-KUisKCKHHagUUo1XD3ooWP3DZLmckSw==
+Referer: https://weibo.com/u/5885799032
+Cookie: SINAGLOBAL=5564459443412.725.1691551520655; ULV=1761408995743:78:1:1:3325229484724.0747.1761408995373:1758622640317; SCF=AifPxbBkS5LEGO2DDos3PdBIiJETOMmkyQOot4mO5x2FxhAPE69w2uDOzGO94t9eWh4nNABbH8Xn7di1-6O0tQQ.; ALF=1764473120; SUB=_2A25EAFxwDeRhGeVI61ET9SjKwjmIHXVnfNG4rDV8PUJbkNAYLUTCkW1NTAOtphbM0WLjY8ipNBGX6_IeHXHCkKd8; SUBP=0033WrSXqPxfM725Ws9jqgMF55529P9D9WFOy.hqXqwQGpGTla2erusc5JpX5KMhUgL.FoeceheESKqc1K-2dJLoI0YLxKqL1hnL1K2LxKML1-2L1hBLxKqLBKzLBKqLxKqL1heLBoeLxK-LBKBLB-2LxKnLB.qL1-eLxKBLB.2L1hqt; XSRF-TOKEN=DQfyQW7EfjJ6a3moXyj0Ntx1; WBPSESS=XMMIwdETR_JT96BLYlgiKdRbtXi8_udAJVxUz_5SaKY9HhqTHcFvn3klk_-W9c2FStb4y1x3iD8U7rCnVOZPuXLHXon-x31hOPRQUcdltTzre2Een-Ob7t1OH1bg0AW1_wSaTHgktrRGPirDX4uy6A==
 Sec-Fetch-Dest: empty
 Sec-Fetch-Mode: cors
 Sec-Fetch-Site: same-origin
-TE: trailers
+Priority: u=0

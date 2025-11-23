@@ -141,6 +141,8 @@ public class WeiboImageDownloaderExt {
 			if (singleObject.containsKey(Constants.PICS_ID)) {
 				JSONArray picArray = singleObject.getJSONArray(Constants.PICS_ID);
 				List<String> pics = picArray.toJavaList(String.class);
+				pics = pics.stream().filter(line -> !line.contains("Expires=")).toList();
+
 
 				File yearMonthFolder = outputFolder;
 				if (year_month_folder) {

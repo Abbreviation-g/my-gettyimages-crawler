@@ -73,7 +73,7 @@ public class WeiboImageDownloader {
 				inputStream.close();
 			}
 		} catch (IOException ex) {
-			System.err.println(url);
+			System.err.println(url + "\t" + ex.getMessage());
 			return false;
 		}
 		return true;
